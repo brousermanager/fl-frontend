@@ -1,36 +1,10 @@
 <template>
+  <HomeMainSlider></HomeMainSlider>
   <v-main>
-    <v-container>
-      <SessoDialog
-        textSource="Merda di edo"
-        btnTxt="Merda di edo"
-      />
-      <v-sheet class="pa-12" outlined elevation="12" rounded>
-        <v-row>
-          <video-player
-            :class="[
-              'video-player',
-              'vjs-big-play-centered',
-              { loading: !state },
-            ]"
-            :sources="mediaConfig.sources"
-            :poster="mediaConfig.poster"
-            :fluid="playerConfig.fluid"
-            :loop="playerConfig.loop"
-            crossorigin="anonymous"
-            playsinline
-            :width="680"
-            v-model:height="playerConfig.height"
-            v-model:volume="playerConfig.volume"
-            v-model:playbackRate="playerConfig.playbackRate"
-            v-model:controls="playerConfig.controls"
-            v-model:muted="playerConfig.muted"
-            v-model:playbackRates="playerConfig.playbackRates"
-          />
-          <av-waveform :src="mediaConfig.sources[0].src"></av-waveform>
-        </v-row>
-      </v-sheet>
-    </v-container>
+    <SessoDialog
+      textSource="Merda di edo"
+      btnTxt="Merda di edo"
+    />
   </v-main>
 </template>
 

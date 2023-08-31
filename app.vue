@@ -2,6 +2,7 @@
   <v-app>
     <div>
       <SideBar />
+      <HeaderMenu />
       <NuxtPage />
     </div>
   </v-app>
