@@ -5,6 +5,7 @@
       textSource="Merda di edo"
       btnTxt="Merda di edo"
     />
+    <ComeTiPare />
   </v-main>
 </template>
 
