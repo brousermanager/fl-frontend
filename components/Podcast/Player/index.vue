@@ -1,17 +1,10 @@
 <template>
-  <div class="center-container">
-    <AVCircle src="/music.mp3"/>
-  </div>
+  <Card>
+    <Button/>
+  </Card>
 </template>
 
-<script lang="ts" setup>
-import {AVCircle} from 'vue-audio-visual'
+<script setup lang="ts">
+import Button from "~/components/Podcast/Player/Button.vue";
+import Card from "~/components/Podcast/Player/Card.vue";
 </script>
-
-<style scoped>
-.center-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-</style>
