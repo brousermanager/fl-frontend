@@ -5,7 +5,7 @@
       textSource="Merda di edo"
       btnTxt="Merda di edo"
     />
-    <ComeTiPare />
+    <PodcastPlayer />
   </v-main>
 </template>
 
