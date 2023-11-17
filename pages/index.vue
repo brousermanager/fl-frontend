@@ -1,5 +1,5 @@
 <template>
-  <HomeMainSlider></HomeMainSlider>
+  <HomeMainSlider />
   <v-main>
     <SessoDialog
         btnTxt="Merda di edo"

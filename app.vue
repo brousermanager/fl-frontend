@@ -1,10 +1,9 @@
 <template>
   <v-app>
-    <div>
+    <v-main>
       <SideBar/>
       <HeaderMenu/>
-      <NuxtPage/>
-    </div>
+    </v-main>
   </v-app>
 </template>
 
