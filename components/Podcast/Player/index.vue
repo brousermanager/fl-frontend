@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {AVCircle} from 'vue-audio-visual'
 </script>
 

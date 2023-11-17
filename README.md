@@ -43,7 +43,8 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ## Tauri
 
-To build the application for desktop, you need to install Tauri's dependencies. Check out the [Tauri documentation](https://tauri.app/v1/guides/getting-started/prerequisites/) for more information.
+To build the application for desktop, you need to install Tauri's dependencies. Check out
+the [Tauri documentation](https://tauri.app/v1/guides/getting-started/prerequisites/) for more information.
 
 Then, you can run the application for desktop:
 

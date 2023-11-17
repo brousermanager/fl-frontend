@@ -9,7 +9,7 @@
             {{ textSource }}
           </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" block @click="dialog = false">Chiudi</v-btn>
+            <v-btn block color="primary" @click="dialog = false">Chiudi</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 const dialog = ref(false);
 const props = defineProps({
   textSource: {

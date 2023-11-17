@@ -2,14 +2,14 @@
   <HomeMainSlider></HomeMainSlider>
   <v-main>
     <SessoDialog
-      textSource="Merda di edo"
-      btnTxt="Merda di edo"
+        btnTxt="Merda di edo"
+        textSource="Merda di edo"
     />
-    <PodcastPlayer />
+    <PodcastPlayer/>
   </v-main>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 const itemStore = useItemStore();
 const videoPath = "/a.mp4";
 
