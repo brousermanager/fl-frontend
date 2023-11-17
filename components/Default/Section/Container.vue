@@ -1,5 +1,5 @@
 <template>
-  <div class="center-container size-container color-container">
+  <div class="center-container size-container color-container margin-container">
     <slot/>
   </div>
 </template>
@@ -20,6 +20,10 @@
 
 .color-container {
   background-color: #404040;
+}
+
+.margin-container {
+  margin: 80px;
 }
 
 </style>
