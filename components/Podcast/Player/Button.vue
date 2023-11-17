@@ -1,8 +1,19 @@
 <template>
-  <AVCircle src="/music.mp3" :canv-width="250" :canv-height="250" outline-color="red" bar-color="red"
-            progress-color="red" playtime-color="red" playtime-font="48px monospace" :rotate-graph="true"/>
+  <AVCircle v-bind="audioVisualConfig"/>
 </template>
 
 <script setup lang="ts">
 import {AVCircle} from 'vue-audio-visual'
+
+const audioVisualConfig = {
+  src: '/music.mp3',
+  canvWidth: 250,
+  canvHeight: 250,
+  outlineColor: 'red',
+  barColor: 'red',
+  progressColor: 'red',
+  playtimeColor: 'red',
+  playtimeFont: '48px monospace',
+  rotateGraph: true,
+};
 </script>
