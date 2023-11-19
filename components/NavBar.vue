@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+
     <v-app-bar app>
       <v-spacer/>
       <v-btn text @click="navigateTo('/')">Home</v-btn>
@@ -8,8 +8,6 @@
       <v-btn text @click="navigateTo('rubriche')">Rubriche</v-btn>
     </v-app-bar>
 
-    <router-view/>
-  </v-app>
 </template>
 
 <script>
