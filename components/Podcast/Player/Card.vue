@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card elevation="8">
     <div class="align-center">
       <div class="center-line" />
       <slot />

@@ -1,4 +1,5 @@
 <template>
+  <v-card elevation="8">
   <v-carousel
     :show-arrows="false"
     cycle
@@ -9,6 +10,7 @@
       <v-img :src="image.src" cover></v-img>
     </v-carousel-item>
   </v-carousel>
+</v-card>
 </template>
 
 <script>

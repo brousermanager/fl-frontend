@@ -2,6 +2,9 @@
   <v-main>
     <v-container>
       <v-row>
+        <v-col cols="12">
+          <HomeMainSlider />
+        </v-col>
         <v-col cols="12" md="8">
           <v-row>
             <v-col cols="12">
