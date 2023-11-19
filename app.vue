@@ -2,8 +2,8 @@
   <v-app>
     <v-main>
       <!-- <SideBar/> -->
-      <NavBar/>
-      <NuxtPage/> 
+      <NavBar />
+      <NuxtPage />
     </v-main>
   </v-app>
 </template>

@@ -1,9 +1,9 @@
 <template>
   <v-card>
     <div class="align-center">
-      <div class="red-line" />
+      <div class="center-line" />
       <slot />
-      <div class="red-line" />
+      <div class="center-line" />
     </div>
   </v-card>
 </template>
@@ -16,9 +16,9 @@
   justify-content: space-evenly;
 }
 
-.red-line {
+.center-line {
   height: 2px;
-  background-color: #FFAB40;
+  background-color: #ffab40;
   width: 250px;
 }
 </style>

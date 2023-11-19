@@ -1,3 +1,1 @@
-<template>
-
-</script>
+<template></template>
