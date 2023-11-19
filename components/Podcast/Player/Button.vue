@@ -1,23 +1,28 @@
 <template>
   <div class="audio-container">
-    <AVCircle v-bind="audioVisualConfig" ref="audioCircle"/>
+    <audio ref="foo" src="/music.mp3"></audio>
+    <AVCircle v-bind="audioVisualConfig" ref="audioCircle" :audio="foo"/>
     <div @click="toggleAudio" class="play-button">
       <!-- Play/Pause button SVG -->
-      <svg v-if="data.isPlaying"
-           xmlns="http://www.w3.org/2000/svg"
-           viewBox="0 0 24 24"
-           stroke-width="2"
-           stroke-linecap="round"
-           stroke-linejoin="round">
+      <svg
+          v-if="data.isPlaying"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+      >
         <rect x="4" y="4" width="6" height="16"></rect>
         <rect x="14" y="4" width="6" height="16"></rect>
       </svg>
-      <svg v-else
-           xmlns="http://www.w3.org/2000/svg"
-           viewBox="0 0 24 24"
-           stroke-width="2"
-           stroke-linecap="round"
-           stroke-linejoin="round">
+      <svg
+          v-else
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+      >
         <polygon points="5 3 19 12 5 21 5 3"></polygon>
       </svg>
     </div>
@@ -25,10 +30,8 @@
 </template>
 
 <script setup lang="ts">
-import {AVCircle} from 'vue-audio-visual'
-import {reactive, ref} from 'vue';
-
-// TODO: Check https://www.npmjs.com/package/vue-audio-visual
+import { AVCircle } from 'vue-audio-visual';
+import { reactive, ref } from 'vue';
 
 const audioVisualConfig = {
   src: '/music.mp3',
@@ -48,33 +51,19 @@ const data = reactive({
   isPlaying: false,
 });
 
-const audioCircle = ref<InstanceType<typeof AVCircle> | null>(null);
+const foo = ref<HTMLAudioElement | null>(null);
 
 const toggleAudio = async () => {
-  console.log("audioCircle:", audioCircle.value); // Log to check the value of audioCircle
-  console.log("audioCircle.value:", audioCircle.value);
-  console.log("audioCircle.value.audio:", audioCircle.value?.audio);
+  const audioElement = foo.value;
 
-
-  if (!data.isPlaying && audioCircle.value?.audio) {
-    console.log("Playing");
-    // Check if the audio is loaded before playing
-    if (audioCircle.value.audio.readyState >= 3) {
-      await audioCircle.value.audio.play();
-    } else {
-      // If not loaded, you might want to wait for it to load before playing
-      await new Promise((resolve) => {
-        audioCircle.value.audio.addEventListener('canplaythrough', resolve, { once: true });
-      });
-      await audioCircle.value.audio.play();
-    }
-  } else if (audioCircle.value?.audio) {
-    audioCircle.value.audio.pause();
+  if (audioElement && !data.isPlaying) {
+    await audioElement.play();
+  } else if (audioElement) {
+    audioElement.pause();
   }
 
   data.isPlaying = !data.isPlaying;
 };
-
 </script>
 
 <style scoped>
