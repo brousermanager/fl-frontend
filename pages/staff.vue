@@ -6,7 +6,6 @@
 
 <script>
 export default {
-  name: 'Pagina1'
+  name: "Pagina1",
 };
 </script>
-  

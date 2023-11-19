@@ -1,5 +1,5 @@
-import {AVPlugin} from "vue-audio-visual";
+import { AVPlugin } from "vue-audio-visual";
 
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(AVPlugin);
+  nuxtApp.vueApp.use(AVPlugin);
 });

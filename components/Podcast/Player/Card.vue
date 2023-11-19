@@ -1,16 +1,12 @@
 <template>
-  <DefaultSectionContainer>
+  <v-card elevation="8">
     <div class="align-center">
-      <div class="red-line" />
+      <div class="center-line" />
       <slot />
-      <div class="red-line" />
+      <div class="center-line" />
     </div>
-  </DefaultSectionContainer>
+  </v-card>
 </template>
-
-<script setup lang="ts">
-import DefaultSectionContainer from "~/components/Default/Section/Container.vue";
-</script>
 
 <style scoped>
 .align-center {
@@ -20,9 +16,9 @@ import DefaultSectionContainer from "~/components/Default/Section/Container.vue"
   justify-content: space-evenly;
 }
 
-.red-line {
+.center-line {
   height: 2px;
-  background-color: red;
+  background-color: #ffab40;
   width: 250px;
 }
 </style>
