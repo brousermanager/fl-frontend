@@ -30,21 +30,22 @@
 </template>
 
 <script setup lang="ts">
-import { AVCircle } from 'vue-audio-visual';
-import { reactive, ref } from 'vue';
+import {AVCircle} from 'vue-audio-visual';
+import {reactive, ref} from 'vue';
 
 const audioVisualConfig = {
-  src: '/music.mp3',
+  src: "/music.mp3",
   canvWidth: 250,
   canvHeight: 250,
-  barColor: 'red',
-  outlineColor: 'red',
-  playtimeColor: 'red',
-  playtimeFont: '0px monospace',
+  barColor: "#FFAB40", // #FFAB40 for contrast, #BDBDBD for grey
+  outlineColor: "#FFAB40",
+  playtimeColor: "#BDBDBD",
+  outlineWidth: 4,
+  playtimeFont: "0px monospace",
   rotateGraph: true,
   playtime: false,
   progress: false,
-  audioControls: false,
+  audioControls: false, // TODO: Comment this line to test audio
 };
 
 const data = reactive({
@@ -84,6 +85,6 @@ const toggleAudio = async () => {
 .play-button svg {
   width: 100%;
   height: 100%;
-  fill: red;
+  fill: #BDBDBD;
 }
 </style>
