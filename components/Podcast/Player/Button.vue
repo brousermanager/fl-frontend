@@ -40,7 +40,7 @@ const audioVisualConfig = {
   barColor: "#FFAB40", // #FFAB40 for contrast, #BDBDBD for grey
   outlineColor: "#FFAB40",
   playtimeColor: "#BDBDBD",
-  outlineWidth: 4,
+  outlineWidth: 3,
   playtimeFont: "0px monospace",
   rotateGraph: true,
   playtime: false,

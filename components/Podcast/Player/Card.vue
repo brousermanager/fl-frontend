@@ -17,8 +17,8 @@
 }
 
 .center-line {
-  height: 2px;
+  height: 3px;
   background-color: #ffab40;
-  width: 250px;
+  width: 175px;
 }
 </style>
