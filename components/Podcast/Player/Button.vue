@@ -63,12 +63,16 @@ const toggleAudio = () => {
   const audio = player.value;
 
   // Toggle between play and pause
-  if (audio.paused) {
-    audio.play();
-    data.isPlaying = true;
+  if (audio != null) {
+    if (audio.paused) {
+      audio.play();
+      data.isPlaying = true;
+    } else {
+      audio.pause();
+      data.isPlaying = false;
+    }
   } else {
-    audio.pause();
-    data.isPlaying = false;
+    console.log("Audio is null");
   }
 };
 </script>
