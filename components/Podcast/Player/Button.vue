@@ -1,7 +1,9 @@
 <template>
   <div class="audio-container">
-    <audio ref="foo" src="/music.mp3"></audio>
-    <a-v-circle v-bind="audioVisualConfig" ref="audioCircle" :audio="foo"/>
+    <div>
+      <audio ref="player" :src="musicSource" type="audio/mpeg" controls hidden></audio>
+      <canvas ref="canvas"></canvas>
+    </div>
     <div @click="toggleAudio" class="play-button">
       <!-- Play/Pause button SVG -->
       <svg
@@ -30,11 +32,15 @@
 </template>
 
 <script setup lang="ts">
-import {AVCircle} from 'vue-audio-visual';
-import {reactive, ref} from 'vue';
+import {useAVCircle} from 'vue-audio-visual';
+import {ref} from 'vue';
 
-const audioVisualConfig = {
-  src: "/music.mp3",
+const player = ref(null);
+const canvas = ref(null);
+const musicSource = '/music.mp3'; // Replace with the correct path to your music file
+
+useAVCircle(player, canvas, {
+  src: musicSource,
   canvWidth: 250,
   canvHeight: 250,
   barColor: "#FFAB40", // #FFAB40 for contrast, #BDBDBD for grey
@@ -45,25 +51,25 @@ const audioVisualConfig = {
   rotateGraph: true,
   playtime: false,
   progress: false,
-  audioControls: false, // TODO: Comment this line to test audio
-};
+  audioControls: false,
+});
 
 const data = reactive({
   isPlaying: false,
 });
 
-const foo = ref<HTMLAudioElement | null>(null);
+const toggleAudio = () => {
+  // Access the audio element using the ref
+  const audio = player.value;
 
-const toggleAudio = async () => {
-  const audioElement = foo.value;
-
-  if (audioElement && !data.isPlaying) {
-    await audioElement.play();
-  } else if (audioElement) {
-    audioElement.pause();
+  // Toggle between play and pause
+  if (audio.paused) {
+    audio.play();
+    data.isPlaying = true;
+  } else {
+    audio.pause();
+    data.isPlaying = false;
   }
-
-  data.isPlaying = !data.isPlaying;
 };
 </script>
 
