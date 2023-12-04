@@ -1,9 +1,9 @@
 <template>
   <v-card elevation="8">
     <div class="align-center">
-      <div class="center-line" />
-      <slot />
-      <div class="center-line" />
+      <v-card class="center-line" color="primary" height="3" width="175"/>
+      <slot/>
+      <v-card class="center-line" color="primary" height="3" width="175"/>
     </div>
   </v-card>
 </template>
@@ -14,11 +14,5 @@
   width: 100%;
   align-items: center;
   justify-content: space-evenly;
-}
-
-.center-line {
-  height: 3px;
-  background-color: #ffab40;
-  width: 175px;
 }
 </style>

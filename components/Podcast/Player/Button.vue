@@ -1,7 +1,7 @@
 <template>
   <div class="audio-container">
     <audio ref="foo" src="/music.mp3"></audio>
-    <AVCircle v-bind="audioVisualConfig" ref="audioCircle" :audio="foo"/>
+    <a-v-circle v-bind="audioVisualConfig" ref="audioCircle" :audio="foo"/>
     <div @click="toggleAudio" class="play-button">
       <!-- Play/Pause button SVG -->
       <svg
