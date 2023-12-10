@@ -35,8 +35,8 @@
 import {useAVCircle} from 'vue-audio-visual';
 import {ref} from 'vue';
 
-const player = ref(null);
-const canvas = ref(null);
+const player: Ref<HTMLAudioElement | null> = ref(null);
+const canvas: Ref<HTMLAudioElement | null> = ref(null);
 const musicSource = '/music.mp3'; // Replace with the correct path to your music file
 
 useAVCircle(player, canvas, {
