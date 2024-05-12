@@ -17,8 +17,19 @@
           </v-row>
         </v-col>
         <v-col cols="12" md="4">
-          <BoilerplateCard cardHeight="600px" title="Podcast list" />
+          <PodcastThumbnail v-for="podcast in podcasts" :key="podcast.id" :podcast="podcast" />
         </v-col>
       </v-row>
     </v-container>
 </template>
+
+
+
+<script setup>
+
+const store = usePodcastStore();
+
+store.fetchPodcasts();
+const podcasts = store.podcasts;
+
+</script>

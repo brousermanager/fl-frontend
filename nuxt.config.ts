@@ -1,14 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
-
   app: {
     head: {
-      title: "nuxt3 - vuetify - tauri",
+      title: "Radio Frequenza Libera",
       meta: [
         {
           name: "description",
-          content: "nuxt3 - vuetify - tauri",
+          content: "Radio Frequenza Libera",
         },
       ],
     },
@@ -30,7 +29,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@pinia/nuxt", "pinia-logger-nuxt"],
+  modules: ["@pinia/nuxt", "pinia-logger-nuxt", "@nuxt/devtools", "@dargmuesli/nuxt-cookie-control"],
 
   pinia: {
     autoImports: ["defineStore", "definePiniaStore", "storeToRefs"],
@@ -40,8 +39,10 @@ export default defineNuxtConfig({
     autoImport: true,
     dirs: ["*"],
   },
-
   devtools: {
-    enabled: true,
+    timeline: {
+      enabled: true,
+    },
   },
+
 });

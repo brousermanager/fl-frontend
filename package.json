@@ -17,8 +17,10 @@
   },
   "dependencies": {
     "@core-player/playcore-hls": "^0.1.1",
+    "@dargmuesli/nuxt-cookie-control": "^8.3.2",
     "@mdi/font": "^7.1.96",
     "@nuxt/types": "^2.16.3",
+    "@nuxtjs/proxy": "^2.1.0",
     "@pinia/nuxt": "^0.4.10",
     "@types/nodemon": "^1.19.2",
     "@videojs-player/vue": "^1.0.0",
