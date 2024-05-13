@@ -17,7 +17,8 @@
           </v-row>
         </v-col>
         <v-col cols="12" md="4">
-          <PodcastThumbnail v-for="podcast in podcasts" :key="podcast.id" :podcast="podcast" />
+          <PodcastThumbnail v-for="podcast in store.podcasts" :key="podcast.id" :podcast="podcast" />
+          {{ store.podcasts }}
         </v-col>
       </v-row>
     </v-container>
@@ -30,6 +31,6 @@
 const store = usePodcastStore();
 
 store.fetchPodcasts();
-const podcasts = store.podcasts;
+
 
 </script>
