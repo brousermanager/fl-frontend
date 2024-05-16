@@ -1,7 +1,5 @@
 <template>
-  <PodcastPlayerCard>
-    <PodcastPlayerButton />
-  </PodcastPlayerCard>
+  <PodcastPlayerButton />
 </template>
 
 <script setup lang="ts"></script>

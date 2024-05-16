@@ -29,7 +29,12 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@pinia/nuxt", "pinia-logger-nuxt", "@nuxt/devtools", "@dargmuesli/nuxt-cookie-control"],
+  modules: [
+    "@pinia/nuxt",
+    "pinia-logger-nuxt",
+    "@nuxt/devtools",
+    "@dargmuesli/nuxt-cookie-control",
+  ],
 
   pinia: {
     autoImports: ["defineStore", "definePiniaStore", "storeToRefs"],
@@ -44,5 +49,4 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
-
 });
