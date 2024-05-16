@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+
     <v-card @click="playSong">
       <v-row>
         <v-col cols="8">
@@ -22,7 +22,7 @@
         </v-col>
       </v-row>
     </v-card>
-  </v-container>
+    <v-divider :thickness="5" class="ma-2"></v-divider>
 </template>
 
 <script setup>
