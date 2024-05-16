@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const usePodcastStore = defineStore("podcast", () => {
   const podcasts = ref([]);
-  const currentPodcast = ref("");
+  const currentPodcast = ref(null);
 
   const fetchPodcasts = async () => {
     try {
@@ -14,6 +14,7 @@ export const usePodcastStore = defineStore("podcast", () => {
       const data = await response.data;
       console.log("Podcasts:", data);
       podcasts.value = data;
+      currentPodcast.value = data[0];
     } catch (error) {
       console.error("Failed to fetch podcasts:", error);
     }
