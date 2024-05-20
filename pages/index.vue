@@ -19,6 +19,7 @@
       </v-col>
 
       <v-col cols="12" md="4">
+      {{ store.podcasts }}
         <PodcastSelector
           v-for="podcast in store.podcasts"
           :podcast="podcast"
@@ -32,5 +33,6 @@
 <script setup>
 const store = usePodcastStore();
 
-store.fetchPodcasts();
+await store.getPodcasts();
+
 </script>

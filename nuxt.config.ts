@@ -25,7 +25,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      REST_API_URL: process.env.REST_API_URL || "http://localhost:4000",
+      REST_API_URL: process.env.REST_API_URL || "http://localhost:8000",
     },
   },
 

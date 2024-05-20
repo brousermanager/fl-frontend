@@ -1,24 +1,34 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
-export const usePodcastStore = defineStore("podcast", () => {
-  const podcasts = ref([]);
-  const currentPodcast = ref(null);
 
-  const fetchPodcasts = async () => {
+export const usePodcastStore = defineStore("podcast", () => {
+  const currentPodcast = ref({}) as Ref<any>;
+  const podcasts = ref([]) as Ref<any[]>;
+  const loading = ref(false) as Ref<boolean>;
+  const error = ref(null) as Ref<string | null>;
+
+  const getPodcasts = async () => {
+
+    loading.value = true;
     try {
       const response = await axios.get(
-        "https://fl-backend.replit.app/podcast/",
-        { timeout: 5000 }
+        `${useRuntimeConfig().public.REST_API_URL}/podcast/`
       );
       const data = await response.data;
-      console.log("Podcasts:", data);
       podcasts.value = data;
-      currentPodcast.value = data[0];
-    } catch (error) {
-      console.error("Failed to fetch podcasts:", error);
+      currentPodcast.value = podcasts[0];
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        error.value = err.message;
+      } else {
+        error.value = 'An unexpected error occurred';
+      }
+    } finally {
+      loading.value = false;
     }
-  };
+  }
+
 
   const updateCurrentPodcast = (podcast: any) => {
     currentPodcast.value = podcast;
@@ -26,8 +36,8 @@ export const usePodcastStore = defineStore("podcast", () => {
 
   return {
     podcasts,
-    fetchPodcasts,
+    getPodcasts,
     updateCurrentPodcast,
-    currentPodcast,
+    currentPodcast
   };
 });
