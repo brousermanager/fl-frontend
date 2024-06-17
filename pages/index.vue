@@ -19,20 +19,51 @@
       </v-col>
 
       <v-col cols="12" md="4">
-      {{ store.podcasts }}
-        <PodcastSelector
-          v-for="podcast in store.podcasts"
-          :podcast="podcast"
-          :key="podcast.id"
-        />
+        <PodcastList :podcasts="podcasts" />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script setup>
-const store = usePodcastStore();
+  import { ref } from "vue";
 
-await store.getPodcasts();
+  const store = usePodcastStore();
+
+  await store.getPodcasts();
+
+  const podcasts = ref([
+    {
+      title: 'Nome del podcast',
+      description: 'Descrizione del podcast',
+      image: '1.jpg',
+      url: 'dwofw'
+    },
+    {
+      title: 'Nome del podcast',
+      description: 'Descrizione del podcast',
+      image: '2.jpg',
+      episodes: [
+        {
+          name: 'Ciao ciao',
+          url: 'geongoergr'
+        },
+        {
+          name: 'Salve',
+          url: 'gmrogrrg'
+        },
+        {
+          name: 'Buongiorno',
+          url: 'ekinverivnei'
+        }
+      ]
+    },
+    {
+      title: 'Nome del podcast',
+      description: 'Descrizione del podcast',
+      image: 'https://cdn.vuetifyjs.com/images/cards/docks.jpg',
+      url: 'grg'
+    }
+  ]);
 
 </script>
