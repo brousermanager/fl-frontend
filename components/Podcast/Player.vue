@@ -1,35 +1,40 @@
 <template>
-  <v-card>
-    <v-container>
-      <audio
-        ref="audio"
-        :src="audioUrl"
-        @timeupdate="updateTime"
-        @loadedmetadata="setDuration"
-        @ended="resetTime"
-        hidden
-      ></audio>
-      Duration: {{ duration }} / Current time: {{ currentTime }} / Progress:
-      {{ progress }} / Slider progress: {{ sliderProgress }}
-      <v-btn icon @click="togglePlay">
-        <v-icon>{{ isPlaying ? "mdi-pause" : "mdi-play" }}</v-icon>
-      </v-btn>
-      <v-slider
-        v-model="sliderProgress"
-        :min="0"
-        :max="100"
-        color="primary"
-        @input="seek"
-      ></v-slider>
-    </v-container>
+  <v-card :title="podcast.title">
+    <v-card-text class="podcast-list">
+      {{ podcast.description }}
+      <v-container>
+        <audio
+          ref="audio"
+          :src="audioUrl"
+          @timeupdate="updateTime"
+          @loadedmetadata="setDuration"
+          @ended="resetTime"
+          hidden
+        />
+        Duration: {{ duration }} / Current time: {{ currentTime }} / Progress:
+        {{ progress }} / Slider progress: {{ sliderProgress }}
+        <v-btn icon @click="togglePlay">
+          <v-icon>{{ isPlaying ? "mdi-pause" : "mdi-play" }}</v-icon>
+        </v-btn>
+        <v-slider
+          v-model="sliderProgress"
+          :min="0"
+          :max="100"
+          color="primary"
+          @input="seek"
+        />
+      </v-container>
+    </v-card-text>
   </v-card>
 </template>
+
 
 <script setup lang="ts">
 import { ref, watch, computed } from "vue";
 
 const store = usePodcastStore();
 const audioUrl = ref("");
+const { podcast } = defineProps(['podcast']);
 
 watch(
   () => store.currentPodcast,
@@ -77,3 +82,10 @@ const seek = (value) => {
   audio.value.currentTime = (value / 100) * audio.value.duration;
 };
 </script>
+
+<style scoped>
+  .podcast-list {
+    overflow-y: auto;
+    height: 650px;
+  }
+</style>
