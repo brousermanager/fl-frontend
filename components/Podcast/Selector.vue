@@ -28,12 +28,12 @@
 const store = usePodcastStore();
 
 const props = defineProps({
-podcast: {
-  type: Object,
-  required: true,
-},
+  podcast: {
+    type: Object,
+    required: true,
+  },
 });
 const playSong = () => {
-store.updateCurrentPodcast(props.podcast);
+  store.updateCurrentPodcast(props.podcast);
 };
 </script>

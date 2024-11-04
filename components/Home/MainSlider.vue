@@ -14,7 +14,5 @@
 </template>
 
 <script setup>
-
-  const images = [{ src: "logo.png" }, { src: "logo.png" }, { src: "logo.png" }];
-
+const images = [{ src: "logo.png" }, { src: "logo.png" }, { src: "logo.png" }];
 </script>

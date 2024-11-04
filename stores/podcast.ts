@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
-
 export const usePodcastStore = defineStore("podcast", () => {
   const currentPodcast = ref({}) as Ref<any>;
   const podcasts = ref([]) as Ref<any[]>;
@@ -9,7 +8,6 @@ export const usePodcastStore = defineStore("podcast", () => {
   const error = ref(null) as Ref<string | null>;
 
   const getPodcasts = async () => {
-
     loading.value = true;
     try {
       const response = await axios.get(
@@ -22,13 +20,12 @@ export const usePodcastStore = defineStore("podcast", () => {
       if (err instanceof Error) {
         error.value = err.message;
       } else {
-        error.value = 'An unexpected error occurred';
+        error.value = "An unexpected error occurred";
       }
     } finally {
       loading.value = false;
     }
-  }
-
+  };
 
   const updateCurrentPodcast = (podcast: any) => {
     currentPodcast.value = podcast;
@@ -38,6 +35,6 @@ export const usePodcastStore = defineStore("podcast", () => {
     podcasts,
     getPodcasts,
     updateCurrentPodcast,
-    currentPodcast
+    currentPodcast,
   };
 });
