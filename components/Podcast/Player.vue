@@ -7,13 +7,23 @@
 ></VuetifyAudio>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref, watch, computed } from "vue";
 import VuetifyAudio from 'vuetify3-audio-player'
 
 const file = ref('https://podcast-fl.s3.amazonaws.com/MP3_PODCAST/Noi_Ortadini_Intervista_.mp3')
-</script>
+const store = usePodcastStore();
+// const file = ref("");
+const { podcast } = defineProps(['podcast']);
 
+watch(
+  () => store.currentPodcast,
+  (podcast: any) => {
+    file.value = podcast.audio_url;
+  }
+);
+
+</script>
 
 
 // Attributes
@@ -33,4 +43,5 @@ const file = ref('https://podcast-fl.s3.amazonaws.com/MP3_PODCAST/Noi_Ortadini_I
 //     downloadIcon (String) (Optional, default is mdi-download): Set the icon for download
 //     volumeHighIcon (String) (Optional, default is mdi-volume-high): Set the icon for volume
 //     volumeMuteIcon (String) (Optional, default is mdi-volume-mute): Set the icon for mute
+
 
