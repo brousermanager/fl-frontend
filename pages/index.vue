@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="background-image">
     <v-row>
       <v-col cols="12">
         <HomeMainSlider />
@@ -36,3 +36,11 @@ const store = usePodcastStore();
 await store.getPodcasts();
 
 </script>
+
+<style scoped>
+.background-image {
+  background-image: url('bg.png');
+  background-size: cover;
+  background-position: center;
+}
+</style>

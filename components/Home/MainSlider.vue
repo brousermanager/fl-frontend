@@ -13,12 +13,8 @@
   </v-card>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      images: [{ src: "1.jpg" }, { src: "2.jpg" }, { src: "3.jpg" }],
-    };
-  },
-};
+<script setup>
+
+  const images = [{ src: "logo.png" }, { src: "logo.png" }, { src: "logo.png" }];
+
 </script>

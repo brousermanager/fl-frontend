@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
+
   app: {
     head: {
       title: "Radio Frequenza Libera",
@@ -44,9 +45,12 @@ export default defineNuxtConfig({
     autoImport: true,
     dirs: ["*"],
   },
+
   devtools: {
     timeline: {
       enabled: true,
     },
   },
+
+  compatibilityDate: "2024-11-04",
 });
