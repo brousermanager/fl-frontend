@@ -1,28 +1,24 @@
-import { createVuetify } from "vuetify";
-import * as components from "vuetify/components";
-import * as directives from "vuetify/directives";
-
-// https://next.vuetifyjs.com/en/components/all/
+import { createVuetify } from 'vuetify';
+import { defineNuxtPlugin } from '#app';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
     components,
     directives,
     theme: {
-      defaultTheme: "dark",
+      defaultTheme: 'dark',
       themes: {
-        dark: {
+        light: {
           colors: {
-            // TODO: Change those colors to change them across all the software
-            primary: "#FFAB40",
-            secondary: "#BDBDBD",
-            text: "#BDBDBD",
-            //                        background: "#BDBDBD",
-            //                        cardBackground: "#BDBDBD"
+            primary: '#B7003F',
+            secondary: '#2E2250',
           },
         },
       },
     },
   });
+
   nuxtApp.vueApp.use(vuetify);
 });
