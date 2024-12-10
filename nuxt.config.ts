@@ -16,8 +16,7 @@ export default defineNuxtConfig({
 
   css: [
     "vuetify/lib/styles/main.sass",
-    "@mdi/font/css/materialdesignicons.css",
-    "video.js/dist/video-js.css",
+    "@mdi/font/css/materialdesignicons.css"
   ],
 
   build: {
