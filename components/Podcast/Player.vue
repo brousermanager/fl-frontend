@@ -1,91 +1,28 @@
 <template>
-  <v-card :title="podcast.title">
-    <v-card-text class="podcast-list">
-      {{ podcast.description }}
-      <v-container>
-        <audio
-          ref="audio"
-          :src="audioUrl"
-          @timeupdate="updateTime"
-          @loadedmetadata="setDuration"
-          @ended="resetTime"
-          hidden
-        />
-        Duration: {{ duration }} / Current time: {{ currentTime }} / Progress:
-        {{ progress }} / Slider progress: {{ sliderProgress }}
-        <v-btn icon @click="togglePlay">
-          <v-icon>{{ isPlaying ? "mdi-pause" : "mdi-play" }}</v-icon>
-        </v-btn>
-        <v-slider
-          v-model="sliderProgress"
-          :min="0"
-          :max="100"
-          color="primary"
-          @input="seek"
-        />
-      </v-container>
-    </v-card-text>
-  </v-card>
+  <VuetifyAudio :file="file" color="#952175" downloadable ref="vuetifyAudio"></VuetifyAudio>
 </template>
 
-
 <script setup lang="ts">
-import { ref, watch, computed } from "vue";
+  import { ref, watch } from "vue";
+  import VuetifyAudio from "vuetify3-audio-player";
+  import { usePodcastStore } from "~/stores/podcast";
+  import type { Podcast } from "~/models/podcast";
 
-const store = usePodcastStore();
-const audioUrl = ref("");
-const { podcast } = defineProps(['podcast']);
+  const file = ref("");
+  const store = usePodcastStore();
+  const vuetifyAudio = ref(null);
 
-watch(
-  () => store.currentPodcast,
-  (podcast: any) => {
-    audioUrl.value = podcast.audio_url;
-  }
-);
+  watch(
+      () => store.currentPodcast,
+      (podcast: Podcast | null) => {
+          if (podcast) {
+              // Pause the audio when changing the podcast
+              if (vuetifyAudio.value) {
+                  vuetifyAudio.value.stop();
+              }
+              file.value = podcast.audio_url;
+          }
+      }
+  );
 
-const audio: Ref<null | HTMLAudioElement> = ref(null);
-const isPlaying = ref(false);
-const currentTime = ref(0);
-const duration = ref(0);
-
-const progress = computed(() => (currentTime.value / duration.value) * 100);
-const sliderProgress = computed({
-  get: () => progress.value,
-  set: (value) => {
-    currentTime.value = (value / 100) * duration.value;
-  },
-});
-
-const updateTime = () => {
-  currentTime.value = audio.value.currentTime;
-};
-
-const setDuration = () => {
-  duration.value = audio.value.duration;
-};
-
-const resetTime = () => {
-  currentTime.value = 0;
-  isPlaying.value = false;
-};
-
-const togglePlay = () => {
-  if (isPlaying.value) {
-    audio.value.pause();
-  } else {
-    audio.value.play();
-  }
-  isPlaying.value = !isPlaying.value;
-};
-
-const seek = (value) => {
-  audio.value.currentTime = (value / 100) * audio.value.duration;
-};
 </script>
-
-<style scoped>
-  .podcast-list {
-    overflow-y: auto;
-    height: 650px;
-  }
-</style>

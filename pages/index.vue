@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="background-image">
     <v-row>
       <v-col cols="12">
         <HomeMainSlider />
@@ -9,66 +9,27 @@
         <v-row>
           <v-col cols="12">
             <!-- <BoilerplateCard cardHeight="300px" title="Podcast player" > -->
-            <PodcastPlayer :podcast="podcast" />
-            <!-- </BoilerplateCard> -->
-          </v-col>
-          <v-col cols="12">
-            <BoilerplateCard cardHeight="400px" title="Social posts" />
+            <PodcastPlayer />
+            <PodcastSelector />
           </v-col>
         </v-row>
       </v-col>
 
       <v-col cols="12" md="4">
-        <HomePodcastList :podcasts="podcasts" />
+        <HomePodcastList :podcasts="store.podcasts" />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-<script setup>
-  console.log(process.env.REST_API_URL)
-  import { ref } from "vue";
-
-  const store = usePodcastStore();
-
-  await store.getPodcasts();
-
-  const podcasts = ref([
-    {
-      title: 'Nome del podcast',
-      description: 'Descrizione del podcast',
-      image: '1.jpg',
-      url: 'dwofw'
-    },
-    {
-      title: 'Nome del podcast',
-      description: 'Descrizione del podcast',
-      image: '2.jpg',
-      episodes: [
-        {
-          name: 'Ciao ciao',
-          url: 'geongoergr'
-        },
-        {
-          name: 'Salve',
-          url: 'gmrogrrg'
-        },
-        {
-          name: 'Buongiorno',
-          url: 'ekinverivnei'
-        }
-      ]
-    },
-    {
-      title: 'Nome del podcast',
-      description: 'Descrizione del podcast',
-      image: 'https://cdn.vuetifyjs.com/images/cards/docks.jpg',
-      url: 'grg'
-    }
-  ]);
-
-  const podcast = {
-    title: 'Podcast d\'esempio',
-    description: 'Descrizione del podcast d\'esempio'
-  };
+<script setup lang="ts">
+const store = usePodcastStore();
 </script>
+
+<style scoped>
+.background-image {
+  background-image: url("bg.png");
+  background-size: cover;
+  background-position: center;
+}
+</style>

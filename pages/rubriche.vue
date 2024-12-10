@@ -1,7 +1,5 @@
-<template>
-  Hello World
-</template>
+<template>Hello World</template>
 
 <script setup>
-  //
+//
 </script>

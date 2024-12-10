@@ -1,10 +1,7 @@
 <template>
   <v-card title="I nostri ultimi podcast" elevation="8">
     <v-list class="podcast-list">
-      <v-list-item
-        v-for="(podcast, i) in podcasts"
-        :key="i"
-      >
+      <v-list-item v-for="(podcast, i) in podcasts" :key="i">
         <v-card variant="outlined">
           <v-img
             class="align-end text-white"
@@ -30,15 +27,15 @@
               <v-expansion-panel title="Ascolta">
                 <v-expansion-panel-text>
                   <v-list :lines="false">
-                   <v-list-item
+                    <v-list-item
                       v-for="(episode, n) in podcast.episodes"
                       :key="n"
                     >
                       <v-list-item-title>
-                        <div style="float: left;">
+                        <div style="float: left">
                           {{ n + 1 }} - {{ episode.name }}
                         </div>
-                        <div style="float: right;">
+                        <div style="float: right">
                           <v-btn
                             variant="tonal"
                             @click="navigateTo(podcast.url)"
@@ -47,7 +44,7 @@
                         </div>
                       </v-list-item-title>
                     </v-list-item>
-                  </v-list>                
+                  </v-list>
                 </v-expansion-panel-text>
               </v-expansion-panel>
             </v-expansion-panels>
@@ -59,12 +56,12 @@
 </template>
 
 <script setup lang="ts">
-  const { podcasts } = defineProps(["podcasts"]);
+const { podcasts } = defineProps(["podcasts"]);
 </script>
 
 <style scoped>
-  .podcast-list {
-    overflow-y: auto;
-    height: 650px;
-  }
+.podcast-list {
+  overflow-y: auto;
+  height: 650px;
+}
 </style>

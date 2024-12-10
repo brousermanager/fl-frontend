@@ -1,12 +1,12 @@
 <template>
   <v-app>
+    <LayoutNavBar />
     <v-main>
-      <LayoutNavBar />
       <NuxtPage />
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts" setup>
-  //
+//
 </script>

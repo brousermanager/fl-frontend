@@ -11,5 +11,5 @@
 </template>
 
 <script setup>
-  const { staff } = defineProps(["staff"]);
+const { staff } = defineProps(["staff"]);
 </script>

@@ -1,39 +1,61 @@
 <template>
-  <v-card @click="playSong">
-    <v-row>
-      <v-col cols="8">
-        <div>
-          <v-card-title class="text-h5">
-            {{ podcast.title }}
-          </v-card-title>
+	<v-list>
+		<v-list-item v-for="item in store.podcasts" :key="item.id">
+			<v-col cols="12">
+				<v-card :color="getCardColor(item)" @click="updateCurrentPodcast(item)">
+					<div class="d-flex flex-no-wrap justify-space-between">
+						<div>
+							<v-card-title class="text-h5">
+								{{ item.title }}
+							</v-card-title>
 
-          <v-card-subtitle>{{ podcast.description }}</v-card-subtitle>
+							<v-card-subtitle>{{ item.description }}</v-card-subtitle>
+						</div>
 
-          <v-card-actions>
-            <v-btn class="ms-2" icon="mdi-play" variant="text"></v-btn>
-          </v-card-actions>
-        </div>
-      </v-col>
-      <v-col cols="4">
-        <v-avatar class="ma-3" size="125">
-          <v-img :src="podcast.cover_file"></v-img>
-        </v-avatar>
-      </v-col>
-    </v-row>
-  </v-card>
-  <v-divider :thickness="5" class="ma-2"></v-divider>
+						<v-avatar class="ma-3" rounded="0" size="125">
+							<v-img :src="item.cover_url" />
+						</v-avatar>
+					</div>
+				</v-card>
+			</v-col>
+		</v-list-item>
+	</v-list>
+	<v-divider :thickness="5" class="ma-2"></v-divider>
 </template>
 
-<script setup>
-const store = usePodcastStore();
+<script setup lang="ts">
+	import { usePodcastStore } from "~/stores/podcast";
+	import type { Podcast } from "~/models/podcast";
 
-const props = defineProps({
-podcast: {
-  type: Object,
-  required: true,
-},
-});
-const playSong = () => {
-store.updateCurrentPodcast(props.podcast);
-};
+	const store = usePodcastStore();
+
+  const getCardColor = (podcast: Podcast) => {
+    return podcast.id === store.currentPodcast.id ? "#952175" : "#2E2250";
+  };
+
+	const updateCurrentPodcast = (newPodcast: Podcast) => {
+		const podcast = store.podcasts.find((p) => p.id === newPodcast.id);
+		if (podcast) {
+			store.updateCurrentPodcast(podcast);
+		}
+	};
+
+	const loadPodcasts = async () => {
+		await store.getPodcasts();
+		if (store.podcasts.length > 0) {
+			store.updateCurrentPodcast(store.podcasts[0]);
+		}
+	};
+
+	onMounted(() => {
+		loadPodcasts();
+	});
 </script>
+
+<style scoped>
+.text-crop {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>
