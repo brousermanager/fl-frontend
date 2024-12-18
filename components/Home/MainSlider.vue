@@ -2,7 +2,7 @@
   <v-card elevation="8">
     <v-carousel
       :show-arrows="false"
-      cycle
+      cycle="true"
       hide-delimiter-background
       interval="4000"
     >
