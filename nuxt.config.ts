@@ -34,6 +34,7 @@ export default defineNuxtConfig({
     "pinia-logger-nuxt",
     "@nuxt/devtools",
     "@dargmuesli/nuxt-cookie-control",
+    "@nuxt/test-utils/module",
   ],
 
   pinia: {
