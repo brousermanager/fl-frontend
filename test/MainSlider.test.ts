@@ -31,5 +31,4 @@ describe('MainSlider tests', () => {
     const carousel = component.find('v-carousel')
     expect(carousel.attributes('cycle')).toBeTruthy()
   })
-
 })
