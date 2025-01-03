@@ -13,6 +13,8 @@
           </v-col>
         </v-row>
       </v-col>
+
+      <HomeFeedInstagram />
     </v-row>
   </v-container>
 </template>
