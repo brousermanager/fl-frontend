@@ -1,5 +1,5 @@
 <template>
-  <v-container class="background-image">
+  <v-container>
     <v-row>
       <v-col cols="12">
         <HomeMainSlider />
@@ -16,11 +16,3 @@
     </v-row>
   </v-container>
 </template>
-
-<style scoped>
-.background-image {
-  background-image: url("bg.png");
-  background-size: cover;
-  background-position: center;
-}
-</style>

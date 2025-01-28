@@ -1,5 +1,5 @@
 <template>
-  <VuetifyAudio :file="file" color="accent" downloadable ref="vuetifyAudio"></VuetifyAudio>
+  <VuetifyAudio :file="file" color="secondary" ref="vuetifyAudio"></VuetifyAudio>
 </template>
 
 <script setup lang="ts">

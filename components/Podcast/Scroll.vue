@@ -63,7 +63,7 @@ const updateCurrentPodcast = (podcastId: string) => {
 };
 
 const getCardColor = (podcastId: string) => {
-  return podcastId === store.currentPodcast.id ? 'accent' : 'secondary';
+  return podcastId === store.currentPodcast.id ? 'secondary' : 'darkPrimary';
 };
 
 
