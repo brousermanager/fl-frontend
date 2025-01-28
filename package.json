@@ -29,7 +29,6 @@
     "pinia-logger-nuxt": "^1.0.3",
     "sass": "^1.82.0",
     "vee-validate": "^4.14.7",
-    "vue-audio-visual": "^3.0.9",
     "vuetify": "^3.7.5",
     "vuetify3-audio-player": "^1.1.0"
   },
