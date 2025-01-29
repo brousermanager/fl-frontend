@@ -3,22 +3,28 @@
     <template v-for="item in items" :key="item.id">
       <div class="d-flex flex-no-wrap justify-space-between">
         <v-sheet
-  class="d-flex align-center justify-center hover-effect"
+  class="hover-effect"
   :width="width"
+  :height="width"
   :color="getCardColor(item.id)"
   @click="updateCurrentPodcast(item.id)"
 >
-  <div class="d-flex flex-no-wrap justify-space-between">
+  <!-- <div class="d-flex flex-no-wrap justify-space-between">
     <v-avatar class="ma-3" rounded="0" size="125">
       <v-img :src="item.cover_url" />
     </v-avatar>
-  </div>
+  </div> -->
+  <PodcastCard
+    :title="item.title"
+    :description="item.description"
+    :cover_url="item.cover_url">
+  </PodcastCard>
 </v-sheet>
         <v-divider vertical :thickness="5" class="ma-2"></v-divider>
       </div>
     </template>
   </v-infinite-scroll>
-  {{ store.currentPodcast }}
+  <!-- {{ store.currentPodcast }} -->
 </template>
 
 <script setup lang="ts">
