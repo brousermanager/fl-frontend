@@ -6,6 +6,7 @@
           class="hover-effect"
           :width="width"
           :color="getCardColor(item.id)"
+          rounded="lg"
           @click="updateCurrentPodcast(item.id)"
         >
           <PodcastCard
