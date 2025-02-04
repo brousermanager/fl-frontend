@@ -17,7 +17,8 @@
   <PodcastCard
     :title="item.title"
     :description="item.description"
-    :cover_url="item.cover_url">
+    :cover_url="item.cover_url"
+    :style="{ width: width + 'px', height: width + 'px' }">
   </PodcastCard>
 </v-sheet>
         <v-divider vertical :thickness="5" class="ma-2"></v-divider>
@@ -104,5 +105,12 @@ const width = computed(() => {
 
 .hover-effect:hover {
   transform: translateY(-10px);
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.v-infinite-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
 }
 </style>
