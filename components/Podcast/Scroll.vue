@@ -5,27 +5,20 @@
         <v-sheet
   class="hover-effect"
   :width="width"
-  :height="width"
   :color="getCardColor(item.id)"
   @click="updateCurrentPodcast(item.id)"
 >
-  <!-- <div class="d-flex flex-no-wrap justify-space-between">
-    <v-avatar class="ma-3" rounded="0" size="125">
-      <v-img :src="item.cover_url" />
-    </v-avatar>
-  </div> -->
   <PodcastCard
     :title="item.title"
     :description="item.description"
     :cover_url="item.cover_url"
-    :style="{ width: width + 'px', height: width + 'px' }">
+    :style="{ width: width}">
   </PodcastCard>
 </v-sheet>
         <v-divider vertical :thickness="5" class="ma-2"></v-divider>
       </div>
     </template>
   </v-infinite-scroll>
-  <!-- {{ store.currentPodcast }} -->
 </template>
 
 <script setup lang="ts">
@@ -102,7 +95,6 @@ const width = computed(() => {
 .hover-effect {
   transition: transform 0.3s ease;
 }
-
 .hover-effect:hover {
   transform: translateY(-10px);
 }
