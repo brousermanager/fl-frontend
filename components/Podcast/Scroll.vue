@@ -43,7 +43,7 @@ const load = async ({
   try {
     await store.getPodcasts(currentPage, pageSize);
     if (store.podcasts.length > 0) {
-      items.value.push(...store.podcasts);
+      items.value = store.podcasts;
       currentPage++;
       done("ok");
     } else {
