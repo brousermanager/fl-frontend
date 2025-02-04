@@ -1,5 +1,12 @@
 <template>
-  <VuetifyAudio :file="file" color="secondary" ref="vuetifyAudio"></VuetifyAudio>
+  <v-card>
+    <v-card-title v-if="store.currentPodcast">
+      {{ store.currentPodcast.title }}
+    </v-card-title>
+    <v-card-subtitle> {{ store.currentPodcast.description }}</v-card-subtitle>
+    <VuetifyAudio :file="file" color="secondary" ref="vuetifyAudio">
+    </VuetifyAudio>
+  </v-card>
 </template>
 
 <script setup lang="ts">
