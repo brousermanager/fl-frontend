@@ -3,18 +3,19 @@
     <template v-for="item in items" :key="item.id">
       <div class="d-flex flex-no-wrap justify-space-between">
         <v-sheet
-  class="hover-effect"
-  :width="width"
-  :color="getCardColor(item.id)"
-  @click="updateCurrentPodcast(item.id)"
->
-  <PodcastCard
-    :title="item.title"
-    :description="item.description"
-    :cover_url="item.cover_url"
-    :style="{ width: width}">
-  </PodcastCard>
-</v-sheet>
+          class="hover-effect"
+          :width="width"
+          :color="getCardColor(item.id)"
+          @click="updateCurrentPodcast(item.id)"
+        >
+          <PodcastCard
+            :title="item.title"
+            :description="item.description"
+            :cover_url="item.cover_url"
+            :style="{ width: width }"
+          >
+          </PodcastCard>
+        </v-sheet>
         <v-divider vertical :thickness="5" class="ma-2"></v-divider>
       </div>
     </template>
@@ -63,9 +64,8 @@ const updateCurrentPodcast = (podcastId: string) => {
 };
 
 const getCardColor = (podcastId: string) => {
-  return podcastId === store.currentPodcast.id ? 'secondary' : 'darkPrimary';
+  return podcastId === store.currentPodcast.id ? "secondary" : "darkPrimary";
 };
-
 
 const { name } = useDisplay();
 
@@ -87,15 +87,13 @@ const width = computed(() => {
       return 400;
   }
 });
-
 </script>
-
 
 <style scoped>
 .hover-effect {
   transition: transform 0.3s ease;
 }
 .hover-effect:hover {
-  transform: translateY(-10px);
+  transform: scale(1.02);
 }
 </style>
