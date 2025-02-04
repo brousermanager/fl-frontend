@@ -98,11 +98,4 @@ const width = computed(() => {
 .hover-effect:hover {
   transform: translateY(-10px);
 }
-::-webkit-scrollbar {
-  display: none;
-}
-.v-infinite-scroll {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none;    /* Firefox */
-}
 </style>
