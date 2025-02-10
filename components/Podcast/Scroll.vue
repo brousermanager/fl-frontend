@@ -75,17 +75,17 @@ const width = computed(() => {
   // must use .value
   switch (name.value) {
     case "xs":
-      return 150;
-    case "sm":
-      return 200;
-    case "md":
       return 300;
+    case "sm":
+      return 300;
+    case "md":
+      return 350;
     case "lg":
-      return 400;
+      return 350;
     case "xl":
-      return 400;
+      return 350;
     case "xxl":
-      return 400;
+      return 350;
   }
 });
 </script>
@@ -95,6 +95,6 @@ const width = computed(() => {
   transition: transform 0.3s ease;
 }
 .hover-effect:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 </style>
