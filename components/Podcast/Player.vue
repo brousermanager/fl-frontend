@@ -1,5 +1,5 @@
 <template>
-  <VuetifyAudioPlayer :file="file" color="secondary" ref="vuetifyAudio" />
+  <VuetifyAudioPlayer :file="file" color="secondary" ref="vuetifyAudio" class="rounded-xl" elevation="24" />
 </template>
 
 <script setup lang="ts">
