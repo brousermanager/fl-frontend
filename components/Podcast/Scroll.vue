@@ -19,10 +19,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { usePodcastStore } from "~/stores/podcast";
 import type { Podcast } from "~/models/podcast";
-import { computed } from "vue";
 import { useDisplay } from "vuetify";
 
 const items = ref<Podcast[]>([]);
