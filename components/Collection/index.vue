@@ -13,4 +13,5 @@
 
 <script setup lang="ts">
 const store = usePodcastStore();
+store.getPodcastCollections();
 </script>
