@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="8" class="ma-5" hover>
+  <v-card elevation="8" hover>
     <v-row>
       <v-col cols="12">
         <v-card>
@@ -9,7 +9,7 @@
         </v-card>
       </v-col>
       <v-col cols="4">
-        <v-img :src="podcastCollection.cover_url" class="ma-2" />
+        <v-img :src="podcastCollection.cover_url" />
       </v-col>
       <v-col cols="8">
         <v-card-text>
