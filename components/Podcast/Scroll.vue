@@ -1,31 +1,26 @@
 <template>
   <v-infinite-scroll direction="horizontal" @load="load">
     <template v-for="item in items" :key="item.id">
-      <div class="d-flex flex-no-wrap justify-space-between">
-        <v-sheet
-  class="d-flex align-center justify-center hover-effect"
-  :width="width"
-  :color="getCardColor(item.id)"
-  @click="updateCurrentPodcast(item.id)"
->
-  <div class="d-flex flex-no-wrap justify-space-between">
-    <v-avatar class="ma-3" rounded="0" size="125">
-      <v-img :src="item.cover_url" />
-    </v-avatar>
-  </div>
-</v-sheet>
-        <v-divider vertical :thickness="5" class="ma-2"></v-divider>
-      </div>
+      <v-sheet
+        class="hover-effect"
+        :width="width"
+        rounded="lg"
+        @click="updateCurrentPodcast(item.id)"
+      >
+        <PodcastCard
+          :podcast="item"
+          :color="getCardColor(item.id)"
+          :style="{ width: width }"
+        />
+      </v-sheet>
+      <v-divider vertical :thickness="5"></v-divider>
     </template>
   </v-infinite-scroll>
-  {{ store.currentPodcast }}
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { usePodcastStore } from "~/stores/podcast";
 import type { Podcast } from "~/models/podcast";
-import { computed } from "vue";
 import { useDisplay } from "vuetify";
 
 const items = ref<Podcast[]>([]);
@@ -43,7 +38,7 @@ const load = async ({
   try {
     await store.getPodcasts(currentPage, pageSize);
     if (store.podcasts.length > 0) {
-      items.value.push(...store.podcasts);
+      items.value = store.podcasts;
       currentPage++;
       done("ok");
     } else {
@@ -63,9 +58,8 @@ const updateCurrentPodcast = (podcastId: string) => {
 };
 
 const getCardColor = (podcastId: string) => {
-  return podcastId === store.currentPodcast.id ? 'secondary' : 'darkPrimary';
+  return podcastId === store.currentPodcast.id ? "secondary" : "darkPrimary";
 };
-
 
 const { name } = useDisplay();
 
@@ -74,29 +68,26 @@ const width = computed(() => {
   // must use .value
   switch (name.value) {
     case "xs":
-      return 150;
-    case "sm":
-      return 200;
-    case "md":
       return 300;
+    case "sm":
+      return 300;
+    case "md":
+      return 350;
     case "lg":
-      return 400;
+      return 350;
     case "xl":
-      return 400;
+      return 350;
     case "xxl":
-      return 400;
+      return 350;
   }
 });
-
 </script>
-
 
 <style scoped>
 .hover-effect {
   transition: transform 0.3s ease;
 }
-
 .hover-effect:hover {
-  transform: translateY(-10px);
+  transform: scale(1.05);
 }
 </style>
