@@ -1,0 +1,12 @@
+
+run = "npm run dev"
+entrypoint = "app.vue"
+modules = ["nodejs-22"]
+
+[nix]
+channel = "stable-23_11"
+
+[deployment]
+build = ["npm", "run", "build"]
+run = ["node", ".output/server/index.mjs"]
+deploymentTarget = "cloudrun"
