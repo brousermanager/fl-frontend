@@ -1,19 +1,27 @@
 <template>
-  <v-app-bar app>
-    <v-spacer />
-    <v-btn text @click="navigateTo('/')">Home</v-btn>
-    <v-btn text @click="navigateTo('/staff')">Staff</v-btn>
-    <v-btn text @click="navigateTo('/chiSiamo')">Chi Siamo</v-btn>
-    <v-btn text @click="navigateTo('/rubriche')">Rubriche</v-btn>
+  <v-app-bar image="logo.png">
+    <template v-slot:image>
+      <v-img gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"></v-img>
+    </template>
+
+    <template v-slot:prepend>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    </template>
+
+    <v-app-bar-title>Radio Frequenza Libera</v-app-bar-title>
+
+    <v-spacer></v-spacer>
+
+    <v-btn icon>
+      <v-icon>mdi-magnify</v-icon>
+    </v-btn>
+
+    <v-btn icon>
+      <v-icon>mdi-heart</v-icon>
+    </v-btn>
+
+    <v-btn icon>
+      <v-icon>mdi-dots-vertical</v-icon>
+    </v-btn>
   </v-app-bar>
 </template>
-
-<script>
-export default {
-  methods: {
-    navigateTo(page) {
-      window.location.href = page;
-    },
-  },
-};
-</script>
