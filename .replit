@@ -10,3 +10,7 @@ channel = "stable-23_11"
 build = ["npm", "run", "build"]
 run = ["node", ".output/server/index.mjs"]
 deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 3000
+externalPort = 80
