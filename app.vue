@@ -3,30 +3,37 @@
     <LayoutNavBar />
     <v-main>
       <NuxtPage />
+      <v-fab
+        :icon="hidePodcastPlayer ? 'mdi-music' : 'mdi-close'"
+        location="bottom right"
+        size="large"
+        app
+        color="primary"
+        @click="hidePodcastPlayer = !hidePodcastPlayer"
+      ></v-fab>
     </v-main>
-    <PodcastPlayer v-if="!hidePodcastPlayer" class="position-fixed bottom-0 w-100" />
+
+    <PodcastPlayer v-show="!hidePodcastPlayer" class="position-fixed bottom-0 w-100" />
     <LayoutFooter />
   </v-app>
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from "vue";
 
-const hidePodcastPlayer = ref(false)
+const hidePodcastPlayer = ref(false);
 
 const checkScroll = () => {
   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    hidePodcastPlayer.value = true
-  } else {
-    hidePodcastPlayer.value = false
+    hidePodcastPlayer.value = true;
   }
-}
+};
 
 onMounted(() => {
-  window.addEventListener('scroll', checkScroll)
-})
+  window.addEventListener("scroll", checkScroll);
+});
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', checkScroll)
-})
+  window.removeEventListener("scroll", checkScroll);
+});
 </script>

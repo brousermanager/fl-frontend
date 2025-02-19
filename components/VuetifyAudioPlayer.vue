@@ -68,17 +68,7 @@
             <v-icon v-if="isOnRepeat">mdi-repeat</v-icon>
             <v-icon v-else>mdi-repeat-off</v-icon>
           </v-btn>
-          <v-btn
-            variant="outlined"
-            :size="minimal ? 'small' : 'default'"
-            icon
-            class="ma-2"
-            :color="color"
-            @click="loaded ? download() : reload()"
-            v-if="!loaded"
-          >
-            <v-icon>{{ refreshIcon }}</v-icon>
-          </v-btn>
+
           <v-btn
             variant="outlined"
             :size="minimal ? 'small' : 'default'"
