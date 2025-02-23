@@ -6,7 +6,7 @@
       <v-fab
         :icon="hidePodcastPlayer ? 'mdi-music' : 'mdi-close'"
         location="bottom right"
-        size="large"
+        :size="hidePodcastPlayer ? 'large' : 'small'"
         app
         color="primary"
         @click="hidePodcastPlayer = !hidePodcastPlayer"
@@ -14,7 +14,6 @@
     </v-main>
 
     <PodcastPlayer v-show="!hidePodcastPlayer" class="position-fixed bottom-0 w-100" />
-    <LayoutFooter />
   </v-app>
 </template>
 
