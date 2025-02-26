@@ -22,17 +22,17 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 const hidePodcastPlayer = ref(false);
 
-const checkScroll = () => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    hidePodcastPlayer.value = true;
-  }
-};
+// const checkScroll = () => {
+//   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+//     hidePodcastPlayer.value = true;
+//   }
+// };
 
-onMounted(() => {
-  window.addEventListener("scroll", checkScroll);
-});
+// onMounted(() => {
+//   window.addEventListener("scroll", checkScroll);
+// });
 
-onUnmounted(() => {
-  window.removeEventListener("scroll", checkScroll);
-});
+// onUnmounted(() => {
+//   window.removeEventListener("scroll", checkScroll);
+// });
 </script>
