@@ -25,7 +25,7 @@ import { useDisplay } from "vuetify";
 
 const items = ref<Podcast[]>([]);
 const store = usePodcastStore();
-let currentPage = 1;
+const currentPage = ref(1);
 const pageSize = 10;
 
 const load = async ({
@@ -35,11 +35,13 @@ const load = async ({
   side: "end" | "start" | "both";
   done: (status: "error" | "loading" | "empty" | "ok") => void;
 }) => {
+  const pageToLoad = currentPage.value;
   try {
-    await store.getPodcasts(currentPage, pageSize);
+    console.log("load", currentPage.value);
+    await store.getPodcasts(currentPage.value, pageSize);
     if (store.podcasts.length > 0) {
       items.value = store.podcasts;
-      currentPage++;
+      currentPage.value++;
       done("ok");
     } else {
       done("empty");

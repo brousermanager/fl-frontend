@@ -7,7 +7,6 @@ import type { PodcastCollection } from "~/models/podcastCollection";
 export const usePodcastStore = defineStore("podcast", () => {
   const count = ref(0);
   const currentPodcast = ref({}) as Ref<Podcast>;
-  const currentPage = ref(1);
   const podcasts = ref([]) as Ref<Podcast[]>;
   const podcastCollections = ref([]) as Ref<PodcastCollection[]>;
   const loading = ref(false) as Ref<boolean>;
@@ -23,7 +22,6 @@ export const usePodcastStore = defineStore("podcast", () => {
       const data = await response.data;
       podcastCollections.value.push(...data.results);
       count.value = data.count;
-      currentPage.value = page;
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -39,6 +37,7 @@ export const usePodcastStore = defineStore("podcast", () => {
   const getPodcasts = async (page: number = 1, pageSize: number = 10) => {
     loading.value = true;
     try {
+      console.log("getPodcasts", page, pageSize);
       const response = await axios.get(
         `${useRuntimeConfig().public.REST_API_URL}/podcast?page=${page}&page_size=${pageSize}`
       );
@@ -46,7 +45,6 @@ export const usePodcastStore = defineStore("podcast", () => {
       const data = await response.data;
       podcasts.value.push(...data.results);
       count.value = data.count;
-      currentPage.value = page;
     } catch (err: unknown) {
       if (err instanceof Error) {
         error.value = err.message;
@@ -70,6 +68,6 @@ export const usePodcastStore = defineStore("podcast", () => {
     getPodcasts,
     updateCurrentPodcast,
     getPodcastCollections,
-    currentPodcast,
+    currentPodcast
   };
 });
