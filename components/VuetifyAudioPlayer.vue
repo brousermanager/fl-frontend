@@ -56,18 +56,6 @@
           >
             <v-icon>{{ stopIcon }}</v-icon>
           </v-btn>
-          <v-btn
-            variant="outlined"
-            :size="minimal ? 'small' : 'default'"
-            icon
-            class="ma-2"
-            :color="color"
-            @click="switchIsOnRepeat()"
-            :disabled="!loaded"
-          >
-            <v-icon v-if="isOnRepeat">mdi-repeat</v-icon>
-            <v-icon v-else>mdi-repeat-off</v-icon>
-          </v-btn>
 
           <v-btn
             variant="outlined"
