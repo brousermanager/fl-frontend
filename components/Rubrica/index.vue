@@ -9,7 +9,16 @@
       <RubricaCard />
     </v-col>
     <v-col>
-      <RubricaLista />
+      <RubricaList @selectRubica="selectRubrica"/>
     </v-col>
   </v-row>
 </template>
+<script setup lang="ts">
+import { ref } from "vue";
+
+const rubrica = ref(null);
+
+const selectRubrica = (r) => {
+  rubrica.value = r;
+};
+</script>

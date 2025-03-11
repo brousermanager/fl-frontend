@@ -5,7 +5,7 @@
         v-for="(podcast, index) in podcastCollection.podcasts" 
         :key="podcast.id"
         :class="{ 'selected': selectedPodcast === podcast.id, 'ml-10 mr-10': true }"
-        @click="selectedPodcast = podcast.id"
+        @click="selectedPodcast = podcast.id; emit('selectRubrica', podcast)"
       >
         <v-list-item-content>
           <v-list-item-title>
@@ -25,6 +25,7 @@ import { ref } from 'vue';
 import type { PodcastCollection } from "~/models/podcastCollection";
 
 defineProps<{ podcastCollection: PodcastCollection }>();
+const emit = defineEmits(["selectRubrica"]);
 
 const selectedPodcast = ref<string | null>(null);
 </script>

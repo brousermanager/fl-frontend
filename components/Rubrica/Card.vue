@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import type { Podcast } from "~/models/podcast";
 
-defineProps<{ podcast: Podcast }>(); // using like this, we can use props without defining them in the script ex. title, cover_url, description, duration, episode_number, total_episodes
+defineProps<{ podcast: Podcast }>(); 
 </script>
 
 <style scoped>
