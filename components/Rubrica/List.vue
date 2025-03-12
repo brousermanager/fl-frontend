@@ -2,19 +2,17 @@
   <v-container>
     <v-list>
       <v-list-item 
-        v-for="(podcast, index) in podcastCollection.podcasts" 
+        v-for="(podcast, index) in podcasts" 
         :key="podcast.id"
         :class="{ 'selected': selectedPodcast === podcast.id, 'ml-10 mr-10': true }"
-        @click="selectedPodcast = podcast.id; emit('selectRubrica', podcast)"
+        @click="selectPodcast(podcast)"
       >
-        <v-list-item-content>
-          <v-list-item-title>
-            {{ index + 1 }}. {{ podcast.title }}
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            {{ podcast.description }}
-          </v-list-item-subtitle>
-        </v-list-item-content>
+        <v-list-item-title>
+          {{ index + 1 }}. {{ podcast.title }}
+        </v-list-item-title>
+        <v-list-item-subtitle>
+          {{ podcast.description }}
+        </v-list-item-subtitle>
       </v-list-item>
     </v-list>
   </v-container>
@@ -22,12 +20,17 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { PodcastCollection } from "~/models/podcastCollection";
+import type { Podcast } from "~/models/podcast";
 
-defineProps<{ podcastCollection: PodcastCollection }>();
-const emit = defineEmits(["selectRubrica"]);
+defineProps<{ podcasts: Podcast[] }>();
+const emits = defineEmits(["selectRubrica"]);
 
 const selectedPodcast = ref<string | null>(null);
+
+const selectPodcast = (p: Podcast) => {
+  selectedPodcast.value = p.id;
+  emits("selectRubrica", p);
+};
 </script>
 
 <style scoped>
