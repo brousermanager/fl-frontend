@@ -35,10 +35,8 @@ const load = async ({
   side: "end" | "start" | "both";
   done: (status: "error" | "loading" | "empty" | "ok") => void;
 }) => {
-  const pageToLoad = currentPage.value;
   try {
-    console.log("load", currentPage.value);
-    await store.getPodcasts(currentPage.value, pageSize);
+    await store.getPodcasts(1, pageSize);
     if (store.podcasts.length > 0) {
       items.value = store.podcasts;
       currentPage.value++;

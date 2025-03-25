@@ -35,7 +35,6 @@ const selectPodcast = (p: Podcast) => {
 
 <style scoped>
 .selected {
-  background-color: #e0e0e0;
   transform: scale(1.01);
   transition: all 0.2s ease-in-out;
 }

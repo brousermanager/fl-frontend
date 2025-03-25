@@ -41,7 +41,6 @@ export const usePodcastStore = defineStore("podcast", () => {
       const response = await axios.get(
         `${useRuntimeConfig().public.REST_API_URL}/podcast?page=${page}&page_size=${pageSize}`
       );
-      console.log(response);
       const data = await response.data;
       podcasts.value.push(...data.results);
       count.value = data.count;

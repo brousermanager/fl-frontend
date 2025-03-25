@@ -9,7 +9,7 @@
           {{ podcast.title }}
         </v-card-title>
         <v-card-subtitle>
-          <h2>Durata: {{ podcast.duration % 60 }} min </h2>
+          <h2>{{ podcast.description }}</h2>
           <!-- <h3>Episodio: {{ podcast.episode_number }} di {{ podcast.total_episodes }}</h3> -->
         </v-card-subtitle>
       </v-col>
