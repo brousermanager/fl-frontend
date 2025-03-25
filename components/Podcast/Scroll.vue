@@ -36,7 +36,7 @@ const load = async ({
   done: (status: "error" | "loading" | "empty" | "ok") => void;
 }) => {
   try {
-    await store.getPodcasts(1, pageSize);
+    await store.getPodcasts(currentPage.value, pageSize);
     if (store.podcasts.length > 0) {
       items.value = store.podcasts;
       currentPage.value++;
