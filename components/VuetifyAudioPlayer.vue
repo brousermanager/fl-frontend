@@ -5,20 +5,20 @@
   >
     <v-card-text>
       <v-row>
-        <v-col class="px-0 mx-0 text-caption">{{ currentTime }}</v-col>
-        <v-col :cols="minimal ? 6 : 8">
+        <v-col cols="4" class="px-0 mx-0 text-caption">{{ currentTime }}</v-col>
+        <v-col :cols="4">
           <v-progress-linear
             :color="color"
             hide-details
             v-model="percentage"
-            :height="20"
+            :height="15"
             clickable
             rounded
             @click="setPosition()"
             :disabled="!loaded"
           ></v-progress-linear>
         </v-col>
-        <v-col class="px-0 mx-0 text-caption">{{ duration }}</v-col>
+        <v-col cols="4" class="px-0 mx-0 text-caption">{{ duration }}</v-col>
       </v-row>
     </v-card-text>
     <audio
@@ -36,7 +36,7 @@
           <v-btn
             variant="outlined"
             icon
-            :size="minimal ? 'small' : 'default'"
+            size='small'
             class="ma-2"
             :color="color"
             @click="playing ? pause() : play()"
@@ -47,7 +47,7 @@
           </v-btn>
           <v-btn
             variant="outlined"
-            :size="minimal ? 'small' : 'default'"
+            size='small'
             icon
             class="ma-2"
             :color="color"
@@ -82,8 +82,9 @@
           </v-btn>
         </v-col>
         <v-spacer></v-spacer>
+        <v-col cols="1" />
 
-        <v-col cols="6" md="5" xl="3">
+        <v-col cols="4">
           <v-slider
             v-if="!minimal"
             v-model="playerVolume"
@@ -107,7 +108,7 @@
             </template>
           </v-slider>
         </v-col>
-        <v-col cols="0" md="1" xl="3" />
+        <v-col cols="1" />
       </v-row>
     </v-card-actions>
   </v-card>
