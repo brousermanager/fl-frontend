@@ -1,19 +1,15 @@
 <template>
   <v-infinite-scroll direction="horizontal" @load="load">
     <template v-for="item in items" :key="item.id">
-      <v-sheet
-        class="hover-effect"
-        :width="width"
-        rounded="lg"
-        @click="updateCurrentPodcast(item.id)"
-      >
+      <v-container>
         <PodcastCard
+          class="hover-effect"
           :podcast="item"
           :color="getCardColor(item.id)"
-          :style="{ width: width }"
+          @click="updateCurrentPodcast(item.id)"
         />
-      </v-sheet>
-      <v-divider vertical :thickness="5"></v-divider>
+      </v-container>
+      <v-divider vertical ></v-divider>
     </template>
   </v-infinite-scroll>
 </template>
