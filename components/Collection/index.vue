@@ -6,7 +6,7 @@
       </v-card>
     </v-col>
     <v-col cols="12" md="6" v-for="(collection, index) in store.podcastCollections" :key="index">
-        <CollectionCard @click="navigateTo('/rubriche')" :podcastCollection="collection" />
+        <CollectionCard :podcastCollection="collection" />
     </v-col>
   </v-row>
 </template>

@@ -1,16 +1,20 @@
 <template>
   <v-card elevation="8" class="ma-5" hover>
-    <v-img height="225" :src="podcastCollection.cover_url" cover></v-img>
-
-    <v-card-item>
-      <v-card-title color="orange-lighten-2" class="text-h6">
-        <v-icon icon="mdi-play-circle" size="small"></v-icon>
-        {{ podcastCollection.title }}
-      </v-card-title>
-    </v-card-item>
-
+    <v-row>
+      <v-col cols="12">
+        <v-img height="225" :src="podcastCollection.cover_url" cover></v-img>
+      </v-col>
+      <v-col cols="12">
+        <v-card-item>
+          <v-card-title color="orange-lighten-2" class="text-h6">
+            <v-icon icon="mdi-play-circle" size="small"></v-icon>
+            {{ podcastCollection.title }}
+          </v-card-title>
+        </v-card-item>
+      </v-col>
+    </v-row>
     <v-card-actions>
-      <v-btn color="orange-lighten-2" text="Descrizione"></v-btn>
+      <v-btn color="orange-lighten-2" text="Descrizione" @click="show = !show"></v-btn>
 
       <v-spacer></v-spacer>
 

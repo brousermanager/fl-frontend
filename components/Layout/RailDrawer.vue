@@ -1,13 +1,18 @@
 <template>
-  <v-navigation-drawer v-model="drawer" :rail="rail" permanent @click="rail = false">
-    <v-list-item prepend-avatar="/logo.png" title="Frequenza Libera" nav>
-      <template v-slot:append>
-        <v-btn icon="mdi-chevron-left" variant="text" @click.stop="rail = !rail"></v-btn>
-      </template>
-    </v-list-item>
+  <v-app-bar scroll-behavior="hide" color="primary">
+    <v-app-bar-nav-icon
+      variant="text"
+      @click.stop="drawer = !drawer"
+    ></v-app-bar-nav-icon>
 
-    <v-divider></v-divider>
+    <v-toolbar-title>Radio Frequenza Libera</v-toolbar-title>
+  </v-app-bar>
 
+  <v-navigation-drawer
+    v-model="drawer"
+    :location="$vuetify.display.mobile ? 'bottom' : undefined"
+    temporary
+  >
     <v-list density="compact" nav>
       <v-list-item
         @click="navigateTo('/')"
@@ -24,7 +29,12 @@
     </v-list>
   </v-navigation-drawer>
 </template>
-<script setup lang="ts">
-const rail = ref(true);
-const drawer = ref(true);
+
+<script lang="ts" setup>
+const drawer = ref(false);
+const group = ref("");
+
+watch(group, () => {
+  drawer.value = false;
+});
 </script>

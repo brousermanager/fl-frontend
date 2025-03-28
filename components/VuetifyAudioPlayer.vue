@@ -36,7 +36,7 @@
           <v-btn
             variant="outlined"
             icon
-            size='small'
+            size="small"
             class="ma-2"
             :color="color"
             @click="playing ? pause() : play()"
@@ -47,7 +47,7 @@
           </v-btn>
           <v-btn
             variant="outlined"
-            size='small'
+            size="small"
             icon
             class="ma-2"
             :color="color"
@@ -84,7 +84,7 @@
         <v-spacer></v-spacer>
         <v-col cols="1" />
 
-        <v-col cols="4">
+        <v-col cols="5" md="4" lg="3">
           <v-slider
             v-if="!minimal"
             v-model="playerVolume"
@@ -108,7 +108,7 @@
             </template>
           </v-slider>
         </v-col>
-        <v-col cols="1" />
+        <v-col cols="0" md="1" lg="2" />
       </v-row>
     </v-card-actions>
   </v-card>
