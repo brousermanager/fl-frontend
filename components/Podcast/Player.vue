@@ -29,13 +29,18 @@ const drawer = ref(true);
 
 watch(
   () => store.currentPodcast,
-  (podcast: Podcast | null) => {
+  async (podcast: Podcast | null) => {
     if (podcast) {
       // Pause the audio when changing the podcast
       if (vuetifyAudio.value) {
-        vuetifyAudio.value.stop();
+        await vuetifyAudio.value.stop();
       }
       file.value = podcast.audio_url;
+      // Play the audio when the podcast changes
+      if (vuetifyAudio.value && podcast.audio_url) {
+        await vuetifyAudio.value.pause();
+        await vuetifyAudio.value.play();
+      }
     }
   }
 );

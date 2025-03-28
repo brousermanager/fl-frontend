@@ -1,35 +1,31 @@
 <template>
-  <v-container>
-    <v-list>
-      <v-list-item 
-        v-for="(podcast, index) in podcasts" 
-        :key="podcast.id"
-        :class="{ 'selected': selectedPodcast === podcast.id, 'ml-10 mr-10': true }"
-        @click="selectPodcast(podcast)"
-      >
-        <v-list-item-title>
-          {{ index + 1 }}. {{ podcast.title }}
-        </v-list-item-title>
-        <v-list-item-subtitle>
-          {{ podcast.description }}
-        </v-list-item-subtitle>
-      </v-list-item>
-    </v-list>
-  </v-container>
+  <v-list>
+    <v-list-item
+      v-for="(podcast, index) in props.podcasts"
+      :key="podcast.id"
+      :class="{ selected: store.currentPodcast.id === podcast.id, 'ml-10 mr-10': true }"
+      @click="updateCurrentPodcast(podcast.id)"
+    >
+      <v-list-item-title> {{ index + 1 }}. {{ podcast.title }} </v-list-item-title>
+      <v-list-item-subtitle>
+        {{ podcast.description }}
+      </v-list-item-subtitle>
+    </v-list-item>
+  </v-list>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import type { Podcast } from "~/models/podcast";
+const store = usePodcastStore();
 
-defineProps<{ podcasts: Podcast[] }>();
-const emits = defineEmits(["selectRubrica"]);
+const props = defineProps<{ podcasts: Podcast[] }>();
 
-const selectedPodcast = ref<string | null>(null);
-
-const selectPodcast = (p: Podcast) => {
-  selectedPodcast.value = p.id;
-  emits("selectRubrica", p);
+const updateCurrentPodcast = (podcastId: string) => {
+  const podcast = props.podcasts.find((p) => p.id === podcastId);
+  if (podcast) {
+    console.log("updateCurrentPodcast", podcast.id);
+    store.updateCurrentPodcast(podcast);
+  }
 };
 </script>
 

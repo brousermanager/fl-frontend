@@ -1,6 +1,6 @@
 <template>
   <v-card elevation="8" class="ma-5" hover>
-    <v-row>
+    <v-row @click="redirectToCollectionPage(podcastCollection.id)">
       <v-col cols="12">
         <v-img height="225" :src="podcastCollection.cover_url" cover></v-img>
       </v-col>
@@ -40,4 +40,9 @@ import type { PodcastCollection } from "~/models/podcastCollection";
 
 defineProps<{ podcastCollection: PodcastCollection }>(); // using like this, we can use props without defining them in the script ex. title, cover_url, description
 const show = ref(false);
+
+const redirectToCollectionPage = (collectionId: string) => {
+  navigateTo(`/rubriche/${collectionId}`);
+};
+
 </script>
