@@ -4,7 +4,6 @@
       <v-card elevation="8">
         <v-card-title>LE NOSTRE RUBRICHE</v-card-title>
       </v-card>
-      {{ store.podcastCollections }}
     </v-col>
     <v-col cols="12" md="6" v-for="(collection, index) in store.podcastCollections" :key="index">
         <CollectionCard :podcastCollection="collection" />
