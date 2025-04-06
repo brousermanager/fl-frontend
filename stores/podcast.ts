@@ -20,7 +20,7 @@ export const usePodcastStore = defineStore("podcast", () => {
 			);
 			console.log(response);
 			const data = await response.data;
-			podcastCollections.value.push(...data.results);
+			podcastCollections.value = data;
 			count.value = data.count;
 		} catch (err: unknown) {
 			if (err instanceof Error) {
