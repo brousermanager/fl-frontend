@@ -12,11 +12,11 @@ export const usePodcastStore = defineStore("podcast", () => {
 	const loading = ref(false) as Ref<boolean>;
 	const error = ref(null) as Ref<string | null>;
 
-	const getPodcastCollections = async (page: number = 1, pageSize: number = 10) => {
+	const getPodcastCollections = async () => {
 		loading.value = true;
 		try {
 			const response = await axios.get(
-				`${useRuntimeConfig().public.REST_API_URL}/podcast-collection?page=${page}&page_size=${pageSize}`
+				`${useRuntimeConfig().public.REST_API_URL}/podcast-collection`
 			);
 			console.log(response);
 			const data = await response.data;

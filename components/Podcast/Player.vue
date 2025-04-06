@@ -2,7 +2,7 @@
   <VuetifyAudioPlayer
     :file="file"
     :title="store.currentPodcast.title"
-    :subtitle="store.currentPodcast.collection"
+    :subtitle="getCollectionNameById(store.currentPodcast.collection)"
     color="secondary"
     ref="vuetifyAudio"
     elevation="24"
@@ -13,10 +13,17 @@
 import { ref, watch } from "vue";
 import { usePodcastStore } from "~/stores/podcast";
 import type { Podcast } from "~/models/podcast";
+import type { PodcastCollection } from "~/models/podcastCollection";
+
 
 const file = ref("");
 const store = usePodcastStore();
 const vuetifyAudio = ref(null);
+
+const getCollectionNameById = (id: string) => {
+  const collection = store.podcastCollections.find((collection: PodcastCollection) => collection.id === id);
+  return collection ? collection.title : "";
+};
 
 watch(
   () => store.currentPodcast,

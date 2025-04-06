@@ -4,6 +4,7 @@
       <v-progress-linear
         :color="color"
         hide-details
+        :height="5"
         v-model="percentage"
         clickable
         rounded

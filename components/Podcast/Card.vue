@@ -9,7 +9,7 @@
       </v-card-title>
 
       <v-card-subtitle>
-        <span class="me-1">{{ podcast.collection }}</span>
+        <span class="me-1">{{ getCollectionNameById(podcast.collection) }}</span>
       </v-card-subtitle>
     </v-card-item>
 
@@ -36,10 +36,20 @@
 </template>
 
 <script setup lang="ts">
+import { usePodcastStore } from "~/stores/podcast";
 import type { Podcast } from "~/models/podcast";
+import type { PodcastCollection } from "~/models/podcastCollection";
+
+const store = usePodcastStore();
+
 
 defineProps<{ podcast: Podcast }>(); // using like this, we can use props without defining them in the script ex. title, cover_url, description
 const show = ref(false);
+
+const getCollectionNameById = (id: string) => {
+  const collection = store.podcastCollections.find((collection: PodcastCollection) => collection.id === id);
+  return collection ? collection.title : "";
+};
 </script>
 
 <style scoped>
