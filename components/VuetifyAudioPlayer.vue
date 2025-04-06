@@ -23,8 +23,7 @@
             <v-btn icon="mdi-fast-forward" variant="text" @click="fastForward()"></v-btn>
           </template>
         </v-list-item>
-      </v-list>
-      <v-row>
+        <v-row>
         <v-col cols="0" md="4"></v-col>
         <v-col cols="6" md="4">
           <v-slider
@@ -52,6 +51,8 @@
         </v-col>
         <v-col cols="6" md="4"></v-col>
       </v-row>
+      </v-list>
+
     </v-sheet>
   </v-navigation-drawer>
 
