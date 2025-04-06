@@ -1,97 +1,39 @@
 <template>
-  <v-card
-    style="text-align: center"
-    :flat="flat == undefined || flat == false ? false : true"
-  >
-    <v-card-text>
+  <v-navigation-drawer permanent location="bottom">
+    <v-sheet color="#212121">
+      <v-progress-linear
+        :color="color"
+        hide-details
+        v-model="percentage"
+        clickable
+        rounded
+        @click="setPosition()"
+        :disabled="!loaded"
+      ></v-progress-linear>
+
+      <v-list>
+        <v-list-item :title="title" :subtitle="subtitle" :flat="flat">
+          <template v-slot:append>
+            <v-btn icon="mdi-rewind" variant="text" @click="rewind()"></v-btn>
+            <v-btn icon="mdi-pause" variant="text" @click="playing ? pause() : play()">
+              <v-icon v-if="!playing || paused">{{ playIcon }}</v-icon>
+              <v-icon v-else>{{ pauseIcon }}</v-icon>
+            </v-btn>
+
+            <v-btn icon="mdi-fast-forward" variant="text" @click="fastForward()"></v-btn>
+          </template>
+        </v-list-item>
+      </v-list>
       <v-row>
-        <v-col cols="4" class="px-0 mx-0 text-caption">{{ currentTime }}</v-col>
-        <v-col :cols="4">
-          <v-progress-linear
-            :color="color"
-            hide-details
-            v-model="percentage"
-            :height="15"
-            clickable
-            rounded
-            @click="setPosition()"
-            :disabled="!loaded"
-          ></v-progress-linear>
-        </v-col>
-        <v-col cols="4" class="px-0 mx-0 text-caption">{{ duration }}</v-col>
-      </v-row>
-    </v-card-text>
-    <audio
-      id="player"
-      ref="player"
-      v-on:ended="ended"
-      v-on:canplay="canPlay"
-      :src="file"
-    ></audio>
-
-    <v-card-actions>
-      <v-row>
-        <v-col cols="6">
-          <v-spacer v-if="minimal"></v-spacer>
-          <v-btn
-            variant="outlined"
-            icon
-            size="small"
-            class="ma-2"
-            :color="color"
-            @click="playing ? pause() : play()"
-            :disabled="!loaded"
-          >
-            <v-icon v-if="!playing || paused">{{ playIcon }}</v-icon>
-            <v-icon v-else>{{ pauseIcon }}</v-icon>
-          </v-btn>
-          <v-btn
-            variant="outlined"
-            size="small"
-            icon
-            class="ma-2"
-            :color="color"
-            @click="stop()"
-            :disabled="!loaded"
-          >
-            <v-icon>{{ stopIcon }}</v-icon>
-          </v-btn>
-
-          <v-btn
-            variant="outlined"
-            :size="minimal ? 'small' : 'default'"
-            icon
-            class="ma-2"
-            :color="color"
-            @click="loaded ? download() : reload()"
-            v-if="loaded && downloadable"
-          >
-            <v-icon>{{ downloadIcon }}</v-icon>
-          </v-btn>
-          <v-btn
-            v-if="minimal"
-            variant="outlined"
-            :size="minimal ? 'small' : 'default'"
-            icon
-            class="ma-2"
-            :color="color"
-            @click="mute()"
-            :disabled="!loaded"
-          >
-            <v-icon>{{ isMuted ? volumeMuteIcon : volumeHighIcon }}</v-icon>
-          </v-btn>
-        </v-col>
-        <v-spacer></v-spacer>
-        <v-col cols="1" />
-
-        <v-col cols="5" md="4" lg="3">
+        <v-col cols="0" md="4"></v-col>
+        <v-col cols="6" md="4">
           <v-slider
+            :color="color"
             v-if="!minimal"
             v-model="playerVolume"
             rounded
-            thumb-size="15"
+            thumb-size="10"
             hide-details
-            :color="color"
             max="1"
             step="0.01"
             min="0"
@@ -108,15 +50,25 @@
             </template>
           </v-slider>
         </v-col>
-        <v-col cols="0" md="1" lg="2" />
+        <v-col cols="6" md="4"></v-col>
       </v-row>
-    </v-card-actions>
-  </v-card>
+    </v-sheet>
+  </v-navigation-drawer>
+
+  <audio
+    id="player"
+    ref="player"
+    v-on:ended="ended"
+    v-on:canplay="canPlay"
+    :src="file"
+  ></audio>
 </template>
 
 <script setup lang="ts">
 // Props
 const props = defineProps({
+  title: { type: String, default: "No current playing..." },
+  subtitle: { type: String },
   flat: { type: Boolean, default: false },
   file: { type: String, default: null },
   autoPlay: { type: Boolean, default: false },
@@ -165,6 +117,17 @@ function setPosition() {
     audio.value.currentTime = parseInt(
       (audio.value.duration / 100) * percentage.value + ""
     );
+  }
+}
+
+function fastForward() {
+  if (audio.value) {
+    audio.value.currentTime += 10;
+  }
+}
+function rewind() {
+  if (audio.value) {
+    audio.value.currentTime -= 10;
   }
 }
 

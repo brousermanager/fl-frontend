@@ -1,11 +1,13 @@
 <template>
   <v-app>
-    <LayoutRailDrawer />
+    <v-main>
+      <LayoutRailDrawer />
 
-    <v-main style="padding-bottom: 110px">
       <NuxtPage />
-    </v-main>
 
-    <PodcastPlayer />
+
+        <PodcastPlayer />
+
+    </v-main>
   </v-app>
 </template>
