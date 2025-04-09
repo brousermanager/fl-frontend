@@ -1,32 +1,54 @@
 <template>
-  <v-navigation-drawer permanent location="bottom">
-    <v-sheet color="#212121">
-      <v-progress-linear
-        :color="color"
-        hide-details
-        :height="5"
-        v-model="percentage"
-        clickable
-        rounded
-        @click="setPosition()"
-        :disabled="!loaded"
-      ></v-progress-linear>
-
-      <v-list>
-        <v-list-item :title="title" :subtitle="subtitle" :flat="flat">
-          <template v-slot:append>
+  <v-footer app order="-1" color="#212121">
+    <v-sheet color="#212121" width="100%" height="100%">
+      <v-row cols="12" justify="center" align="center">
+        <v-progress-linear
+          :color="color"
+          hide-details
+          :height="5"
+          v-model="percentage"
+          clickable
+          rounded
+          @click="setPosition()"
+          :disabled="!loaded"
+        ></v-progress-linear>
+      </v-row>
+      <v-row align="center" justify="center">
+        <v-col cols="5" md="3">
+          <v-row cols="12" justify="center">
             <v-btn icon="mdi-rewind" variant="text" @click="rewind()"></v-btn>
             <v-btn icon="mdi-pause" variant="text" @click="playing ? pause() : play()">
               <v-icon v-if="!playing || paused">{{ playIcon }}</v-icon>
               <v-icon v-else>{{ pauseIcon }}</v-icon>
             </v-btn>
-
             <v-btn icon="mdi-fast-forward" variant="text" @click="fastForward()"></v-btn>
-          </template>
-        </v-list-item>
-        <v-row>
-        <v-col cols="0" md="4"></v-col>
-        <v-col cols="6" md="4">
+          </v-row>
+        </v-col>
+
+        <v-col cols="7" md="5">
+          <v-row justify="center" align="center">
+            <v-col cols="3">
+              <v-img
+                :loading="lazy"
+                aspect-ratio="1/1"
+                :src="image"
+                height="75px"
+              ></v-img>
+            </v-col>
+
+            <v-col cols="9">
+              <v-card-title>
+                {{ title }}
+              </v-card-title>
+
+              <v-card-subtitle v-if="subtitle">
+                {{ subtitle }}
+              </v-card-subtitle>
+            </v-col>
+          </v-row>
+        </v-col>
+
+        <v-col cols="2" v-if="!mobile">
           <v-slider
             :color="color"
             v-if="!minimal"
@@ -50,12 +72,9 @@
             </template>
           </v-slider>
         </v-col>
-        <v-col cols="6" md="4"></v-col>
       </v-row>
-      </v-list>
-
     </v-sheet>
-  </v-navigation-drawer>
+  </v-footer>
 
   <audio
     id="player"
@@ -67,8 +86,12 @@
 </template>
 
 <script setup lang="ts">
+import { useDisplay } from "vuetify";
+
+const { width, mobile } = useDisplay();
 // Props
 const props = defineProps({
+  image: { type: String, default: null },
   title: { type: String, default: "No current playing..." },
   subtitle: { type: String },
   flat: { type: Boolean, default: false },

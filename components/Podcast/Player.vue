@@ -3,6 +3,7 @@
     :file="file"
     :title="store.currentPodcast.title"
     :subtitle="getCollectionNameById(store.currentPodcast.collection)"
+    :image="store.currentPodcast.cover_url"
     color="secondary"
     ref="vuetifyAudio"
     elevation="24"
@@ -34,10 +35,10 @@ watch(
         await vuetifyAudio.value.stop();
       }
       file.value = podcast.audio_url;
-      // Play the audio when the podcast changes
+      // Pause the audio when the podcast changes
       if (vuetifyAudio.value && podcast.audio_url) {
         await vuetifyAudio.value.pause();
-        await vuetifyAudio.value.play();
+        // await vuetifyAudio.value.play();
       }
     }
   }

@@ -1,7 +1,8 @@
 <template>
   <v-app>
+    <LayoutRailDrawer />
+
     <v-main>
-      <LayoutRailDrawer />
 
       <NuxtPage />
 

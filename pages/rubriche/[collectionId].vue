@@ -27,6 +27,7 @@ try {
   podcasts.value = await store.getPodcastsByCollection(
     route.params.collectionId as string
   );
+  store.currentPodcast = podcasts.value[0];
 } catch (error) {
   console.error("Error fetching podcasts:", error);
 }
