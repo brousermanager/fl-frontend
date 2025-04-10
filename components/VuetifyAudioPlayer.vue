@@ -14,22 +14,21 @@
         ></v-progress-linear>
       </v-row>
       <v-row align="center" justify="center">
-        <v-col cols="5" md="3">
-          <v-row cols="12" justify="center">
+        <v-col cols="6" md="3">
+          <v-row cols="12" justify="start" align="center">
             <v-btn icon="mdi-rewind" variant="text" @click="rewind()"></v-btn>
-            <v-btn icon="mdi-pause" variant="text" @click="playing ? pause() : play()">
-              <v-icon v-if="!playing || paused">{{ playIcon }}</v-icon>
-              <v-icon v-else>{{ pauseIcon }}</v-icon>
+            <v-btn size="x-large" icon="mdi-pause" variant="text" @click="playing ? pause() : play()">
+              <v-icon size="x-large"  v-if="!playing || paused">{{ playIcon }}</v-icon>
+              <v-icon size="x-large" v-else>{{ pauseIcon }}</v-icon>
             </v-btn>
             <v-btn icon="mdi-fast-forward" variant="text" @click="fastForward()"></v-btn>
           </v-row>
         </v-col>
 
-        <v-col cols="7" md="5">
+        <v-col cols="6" md="5">
           <v-row justify="center" align="center">
             <v-col cols="3">
               <v-img
-                :loading="lazy"
                 aspect-ratio="1/1"
                 :src="image"
                 height="75px"

@@ -4,7 +4,6 @@
 
     <v-card-item>
       <v-card-title color="orange-lighten-2" class="text-h6">
-        <v-icon icon="mdi-play-circle" size="small"></v-icon>
         {{ podcast.title }}
       </v-card-title>
 

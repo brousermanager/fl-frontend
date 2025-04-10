@@ -1,11 +1,12 @@
 <template>
   <v-parallax src="bg.png" height="40vh">
     <div class="d-flex flex-column fill-height justify-center align-center text-white">
-      <h1 class="text-h2 font-weight-thin mb-4">Radio Frequenza Libera</h1>
-      <h2 class="subheading">
-        Stai ascoltando: <br />
+      <h3>RADIO</h3>
+      <h1 class="mb-4">FREQUENZA LIBERA</h1>
+      <h3 class="subheading">Stai ascoltando:</h3>
+      <h1 class="subheading text-warning">
         {{ store.currentPodcast.title }}
-      </h2>
+      </h1>
     </div>
   </v-parallax>
 </template>

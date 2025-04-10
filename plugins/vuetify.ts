@@ -1,3 +1,4 @@
+import "@/assets/vuetifyTheme.scss";
 import { type ThemeDefinition, createVuetify } from 'vuetify';
 import { defineNuxtPlugin } from "#app";
 import * as components from "vuetify/components";

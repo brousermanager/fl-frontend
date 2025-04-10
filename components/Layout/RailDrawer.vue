@@ -5,7 +5,7 @@
       @click.stop="drawer = !drawer"
     ></v-app-bar-nav-icon>
 
-    <v-toolbar-title>Radio Frequenza Libera</v-toolbar-title>
+    <v-toolbar-title><strong>Radio Frequenza Libera</strong></v-toolbar-title>
   </v-app-bar>
 
   <v-navigation-drawer
