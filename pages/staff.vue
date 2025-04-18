@@ -18,31 +18,37 @@ const staff = ref([
     name: "Edo",
     description: "Fa le pompe",
     image: "/staff/edo.jpg",
+    social: "https://www.instagram.com/paulino_edoardo/",
   },
   {
     name: "Andrea",
     description: "Il bombone",
-    image: "/staff/edo2.jpg",
+    image: "/staff/edo.jpg",
+    social: "https://www.instagram.com/andreabombone/",
   },
   {
     name: "Edo",
     description: "Fa le pompe",
     image: "/staff/edo.jpg",
+    social: "https://www.instagram.com/paulino_edoardo/",
   },
   {
     name: "Andrea",
     description: "Il bombone",
-    image: "",
+    image: "/staff/edo.jpg",
+    social: "https://www.instagram.com/andreabombone/",
   },
   {
     name: "Edo",
     description: "Fa le pompe",
     image: "/staff/edo.jpg",
+    social: "https://www.instagram.com/paulino_edoardo/",
   },
   {
     name: "Andrea",
     description: "Il bombone",
-    image: "",
+    image: "/staff/edo.jpg",
+    social: "https://www.instagram.com/paulino_edoardo/",
   },
 ]);
 </script>
