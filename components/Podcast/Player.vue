@@ -38,7 +38,7 @@ watch(
       // Pause the audio when the podcast changes
       if (vuetifyAudio.value && podcast.audio_url) {
         await vuetifyAudio.value.pause();
-        // await vuetifyAudio.value.play();
+        await vuetifyAudio.value.play();
       }
     }
   }
