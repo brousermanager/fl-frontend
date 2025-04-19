@@ -2,7 +2,7 @@
   <v-card elevation="8" class="ma-5" hover>
     <v-row @click="redirectToCollectionPage(podcastCollection.id)">
       <v-col cols="12">
-        <v-img height="225" :src="podcastCollection.cover_url" cover></v-img>
+        <v-img height="225" :src="podcastCollection.cover" cover></v-img>
       </v-col>
       <v-col cols="12">
         <v-card-item>
