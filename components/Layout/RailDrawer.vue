@@ -27,7 +27,7 @@
         @click="navigateTo('/rubriche')"
       ></v-list-item>
       <v-list-item
-        prepend-icon="mdi-account"
+        prepend-icon="mdi-account-group"
         title="Staff"
         value="staff"
         @click="navigateTo('/staff')"
