@@ -15,13 +15,10 @@ export const usePodcastStore = defineStore("podcast", () => {
 	const getPodcastCollections = async () => {
 		loading.value = true;
 		try {
-			const response = await axios.get(
-				`${useRuntimeConfig().public.REST_API_URL}/podcast-collection`
-			);
+			const response = await axios.get(`${useRuntimeConfig().public.REST_API_URL}/podcast-collection`);
 			console.log(response);
 			const data = await response.data;
 			podcastCollections.value = data;
-			count.value = data.count;
 		} catch (err: unknown) {
 			if (err instanceof Error) {
 				error.value = err.message;

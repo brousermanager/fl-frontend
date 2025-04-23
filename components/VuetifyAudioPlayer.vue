@@ -1,38 +1,53 @@
 <template>
   <v-footer app order="-1" color="#212121">
     <v-sheet color="#212121" width="100%" height="100%">
-      <v-row cols="12" justify="center" align="center">
+      <v-row cols="12">
         <v-progress-linear
+          v-if="!slider"
           :color="color"
           hide-details
           :height="5"
           v-model="percentage"
           clickable
-          rounded
           @click="setPosition()"
           :disabled="!loaded"
         ></v-progress-linear>
+        <v-slider
+          v-else
+          :color="color"
+          hide-details
+          :height="5"
+          v-model="percentage"
+          clickable
+          @click="setPosition()"
+          @update:model-value="setPosition()"
+          :disabled="!loaded"
+        ></v-slider>
       </v-row>
       <v-row align="center" justify="center">
         <v-col cols="6" md="3">
           <v-row cols="12" justify="start" align="center">
             <v-btn icon="mdi-rewind" variant="text" @click="rewind()"></v-btn>
-            <v-btn size="x-large" icon="mdi-pause" variant="text" @click="playing ? pause() : play()">
-              <v-icon size="x-large"  v-if="!playing || paused">{{ playIcon }}</v-icon>
+            <v-btn
+              size="x-large"
+              icon="mdi-pause"
+              variant="text"
+              @click="playing ? pause() : play()"
+            >
+              <v-icon size="x-large" v-if="!playing || paused">{{ playIcon }}</v-icon>
               <v-icon size="x-large" v-else>{{ pauseIcon }}</v-icon>
             </v-btn>
             <v-btn icon="mdi-fast-forward" variant="text" @click="fastForward()"></v-btn>
+          </v-row>
+          <v-row cols="12" justify="start" align="center">
+            <v-card-subtitle> {{ duration }}/{{ currentTime }} </v-card-subtitle>
           </v-row>
         </v-col>
 
         <v-col cols="6" md="5">
           <v-row justify="center" align="center">
             <v-col cols="3">
-              <v-img
-                aspect-ratio="1/1"
-                :src="image"
-                height="75px"
-              ></v-img>
+              <v-img aspect-ratio="1/1" :src="image" height="75px"></v-img>
             </v-col>
 
             <v-col cols="9">
@@ -90,6 +105,7 @@ import { useDisplay } from "vuetify";
 const { width, mobile } = useDisplay();
 // Props
 const props = defineProps({
+  slider: { type: Boolean, default: false },
   image: { type: String, default: null },
   title: { type: String, default: "No current playing..." },
   subtitle: { type: String },

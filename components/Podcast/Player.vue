@@ -1,5 +1,6 @@
 <template>
   <VuetifyAudioPlayer
+    :slider="true"
     :file="file"
     :title="store.currentPodcast.title"
     :subtitle="getCollectionNameById(store.currentPodcast.collection)"
@@ -16,13 +17,14 @@ import { usePodcastStore } from "~/stores/podcast";
 import type { Podcast } from "~/models/podcast";
 import type { PodcastCollection } from "~/models/podcastCollection";
 
-
 const file = ref("");
 const store = usePodcastStore();
 const vuetifyAudio = ref(null);
 
 const getCollectionNameById = (id: string) => {
-  const collection = store.podcastCollections.find((collection: PodcastCollection) => collection.id === id);
+  const collection = store.podcastCollections.find(
+    (collection: PodcastCollection) => collection.id === id
+  );
   return collection ? collection.title : "";
 };
 
@@ -38,7 +40,7 @@ watch(
       // Pause the audio when the podcast changes
       if (vuetifyAudio.value && podcast.audio_url) {
         await vuetifyAudio.value.pause();
-        // await vuetifyAudio.value.play();
+        await vuetifyAudio.value.play();
       }
     }
   }
