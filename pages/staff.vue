@@ -2,7 +2,7 @@
   <v-container>
     <h1>Staff</h1>
     <hr style="background-color: white" />
-    <v-row style="padding-top: 20px">
+    <v-row class="justify-center py-5">
       <v-col v-for="member in staff" cols="12" md="3">
         <StaffCard :staff="member" />
       </v-col>
