@@ -13,14 +13,17 @@
       </v-col>
       <v-divider thickness="4"></v-divider>
       <v-col cols="12">
-        <Collection />
+        <Collection :limit="6" />
+        <v-col>
+          <v-btn class="ma-5" color="orange-lighten-2" @click="navigateTo('/rubriche')">
+            Vedi tutte le rubriche
+          </v-btn>
+        </v-col>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script setup lang="ts">
-const breadCrumbs = ref([
-  { title: "Home", disabled: false, href: "/" }
-]);
+const breadCrumbs = ref([{ title: "Home", disabled: false, href: "/" }]);
 </script>

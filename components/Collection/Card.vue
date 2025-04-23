@@ -44,5 +44,4 @@ const show = ref(false);
 const redirectToCollectionPage = (collectionId: string) => {
   navigateTo(`/rubriche/${collectionId}`);
 };
-
 </script>
