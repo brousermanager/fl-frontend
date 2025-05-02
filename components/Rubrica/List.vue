@@ -1,13 +1,28 @@
 <template>
-  <v-list>
+  <v-list rounded="lg">
     <v-list-item
       v-for="(podcast, index) in props.podcasts"
       :key="podcast.id"
-      :class="{ selected: store.currentPodcast.id === podcast.id, 'ml-10 mr-10': true }"
+      :active="store.currentPodcast.id === podcast.id"
+      :active-color="store.currentPodcast.id === podcast.id ? 'secondary' : ''"
+      :active-class="'selected-item'"
       @click="updateCurrentPodcast(podcast.id)"
+      rounded="lg"
+      class="mb-2"
     >
-      <v-list-item-title> {{ index + 1 }}. {{ podcast.title }} </v-list-item-title>
-      <v-list-item-subtitle>
+      <template v-slot:prepend>
+        <v-avatar color="primary" size="36" class="me-3">
+          <span class="text-caption">{{ index + 1 }}</span>
+        </v-avatar>
+      </template>
+
+      <v-list-item-title class="font-weight-medium">
+        <div class="text-truncate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          {{ podcast.title }}
+        </div>
+      </v-list-item-title>
+      
+      <v-list-item-subtitle class="text-truncate mt-1" max-width="100%">
         {{ podcast.description }}
       </v-list-item-subtitle>
     </v-list-item>
@@ -16,22 +31,16 @@
 
 <script setup lang="ts">
 import type { Podcast } from "~/models/podcast";
-const store = usePodcastStore();
+import { usePodcastStore } from "~/stores/podcast";
 
+const store = usePodcastStore();
 const props = defineProps<{ podcasts: Podcast[] }>();
 
 const updateCurrentPodcast = (podcastId: string) => {
   const podcast = props.podcasts.find((p) => p.id === podcastId);
   if (podcast) {
-    console.log("updateCurrentPodcast", podcast.id);
     store.updateCurrentPodcast(podcast);
   }
 };
 </script>
 
-<style scoped>
-.selected {
-  transform: scale(1.01);
-  transition: all 0.2s ease-in-out;
-}
-</style>
