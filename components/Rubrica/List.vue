@@ -1,31 +1,27 @@
 <template>
-  <v-list rounded="lg">
+  <v-list variant="plain" rounded select-strategy="leaf" elevation="4">
     <v-list-item
       v-for="(podcast, index) in props.podcasts"
       :key="podcast.id"
       :active="store.currentPodcast.id === podcast.id"
       :active-color="store.currentPodcast.id === podcast.id ? 'secondary' : ''"
-      :active-class="'selected-item'"
+      active-class="selected-item"
+      class="py-3"
       @click="updateCurrentPodcast(podcast.id)"
-      rounded="lg"
-      class="mb-2"
     >
       <template v-slot:prepend>
-        <v-avatar color="primary" size="36" class="me-3">
+        <v-avatar color="pink" size="36">
           <span class="text-caption">{{ index + 1 }}</span>
         </v-avatar>
       </template>
 
-      <v-list-item-title class="font-weight-medium">
-        <div class="text-truncate" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-          {{ podcast.title }}
-        </div>
-      </v-list-item-title>
-      
-      <v-list-item-subtitle class="text-truncate mt-1" max-width="100%">
+      <v-list-item-title>{{ podcast.title }}</v-list-item-title>
+
+      <v-list-item-subtitle class="text-high-emphasis">
         {{ podcast.description }}
       </v-list-item-subtitle>
     </v-list-item>
+    <v-spacer></v-spacer>
   </v-list>
 </template>
 
@@ -43,4 +39,3 @@ const updateCurrentPodcast = (podcastId: string) => {
   }
 };
 </script>
-

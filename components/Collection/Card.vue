@@ -2,7 +2,7 @@
   <v-card elevation="8" class="ma-5" hover>
     <v-row @click="redirectToCollectionPage(podcastCollection.id)">
       <v-col cols="12">
-        <v-img height="225" :src="podcastCollection.cover" cover></v-img>
+        <v-img aspect-ratio="1/1" height="250" :src="podcastCollection.cover"></v-img>
       </v-col>
       <v-col cols="12">
         <v-card-item>
@@ -42,6 +42,6 @@ defineProps<{ podcastCollection: PodcastCollection }>(); // using like this, we 
 const show = ref(false);
 
 const redirectToCollectionPage = (collectionId: string) => {
-  navigateTo(`/rubriche/${collectionId}`);
+  return navigateTo(`/rubriche/${collectionId}`);
 };
 </script>

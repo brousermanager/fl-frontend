@@ -7,7 +7,9 @@
     </v-col>
     <v-col
       cols="12"
-      md="6"
+      lg="4"
+      xl="3"
+      sm="6"
       v-for="(collection, index) in podcastCollections"
       :key="index"
     >

@@ -1,6 +1,10 @@
 <template>
   <v-container>
-    <h1>Staff</h1>
+    <v-breadcrumbs :items="breadCrumbs">
+      <template v-slot:divider>
+        <v-icon icon="mdi-chevron-right"></v-icon>
+      </template>
+    </v-breadcrumbs>
     <hr style="background-color: white" />
     <v-row class="justify-center py-5">
       <v-col v-for="member in staff" cols="12" md="3">
@@ -11,7 +15,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+const breadCrumbs = ref([
+  { title: "Home", disabled: false, href: "/" },
+  { title: "Staff", disabled: true, href: "/staff" },
+]);
 
 const staff = ref([
   {
