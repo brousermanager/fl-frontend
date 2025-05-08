@@ -18,13 +18,6 @@
         </v-card-text>
       </v-card>
     </v-col>
-    <!-- <v-col cols="12" class="d-flex flex-column align-center">
-      <v-card variant="plain">
-        <v-card-text class="text-center">
-          {{ podcast.description }}
-        </v-card-text>
-      </v-card>
-    </v-col> -->
   </v-row>
 </template>
 
