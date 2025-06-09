@@ -25,5 +25,5 @@
 </template>
 
 <script setup lang="ts">
-const breadCrumbs = ref([{ title: "Home", disabled: false, href: "/" }]);
+const breadCrumbs = ref([{ title: "Home", disabled: false, to: "/" }]);
 </script>

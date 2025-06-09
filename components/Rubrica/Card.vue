@@ -1,40 +1,28 @@
 <template>
-  <v-card elevation="8" hover class="reduced-width-card padded-card">
-    <v-row justify="center">
-      <v-col cols="12" class="text-center">
-        <v-img :src="podcast.cover_url" class="large-image" />
-      </v-col>
-      <v-col cols="12" class="text-center">
-        <v-card-title>
+  <v-row>
+    <v-col cols="12" class="d-flex justify-center">
+      <v-card elevation="8">
+        <v-img :width="250" :src="podcast.cover_url" aspect-ratio="1/1" cover>
+          <template v-slot:placeholder>
+            <v-row align="center" justify="center" class="fill-height">
+              <v-progress-circular indeterminate color="primary"></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
+      </v-card>
+    </v-col>
+    <v-col cols="12" class="d-flex flex-column align-center">
+      <v-card variant="plain">
+        <v-card-text class="text-center font-weight-bold">
           {{ podcast.title }}
-        </v-card-title>
-        <v-card-subtitle>
-          <h2>{{ podcast.description }}</h2>
-          <!-- <h3>Episodio: {{ podcast.episode_number }} di {{ podcast.total_episodes }}</h3> -->
-        </v-card-subtitle>
-      </v-col>
-    </v-row>
-  </v-card>
+        </v-card-text>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script setup lang="ts">
 import type { Podcast } from "~/models/podcast";
 
-defineProps<{ podcast: Podcast }>(); 
+defineProps<{ podcast: Podcast }>();
 </script>
-
-<style scoped>
-.reduced-width-card {
-  width: 40vw; /* Riduci la larghezza della card */
-  margin: 0 auto;
-}
-
-.large-image {
-  width: 100%;
-  height: 500px;
-}
-
-.padded-card {
-  padding-top: 20px;
-}
-</style>
