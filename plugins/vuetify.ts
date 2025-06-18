@@ -8,8 +8,8 @@ import colors from "vuetify/util/colors";
 const flTheme: ThemeDefinition = {
 	dark: true,
 	colors: {
-    background: colors.indigo.darken4, // Background color
-		surface: colors.indigo.darken2, // Surface color
+    background: '#7E57C2', // Background color
+		surface: '#673AB7', // Surface color
 		primary: colors.lightBlue.darken3, // Primary color
 		"surface-bright": colors.grey.darken2, // Bright surface color
 		"surface-light": colors.grey.darken1, // Light surface color

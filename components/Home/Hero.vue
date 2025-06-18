@@ -3,10 +3,6 @@
     <div class="d-flex flex-column fill-height justify-center align-center text-white">
       <h3>RADIO</h3>
       <h1 class="mb-4">FREQUENZA LIBERA</h1>
-      <h3 class="subheading">Stai ascoltando:</h3>
-      <h1 class="subheading text-warning">
-        {{ store.currentPodcast.title }}
-      </h1>
     </div>
   </v-parallax>
 </template>

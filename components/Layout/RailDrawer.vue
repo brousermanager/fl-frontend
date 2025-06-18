@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar scroll-behavior="hide" color="#311B92">
+  <v-app-bar scroll-behavior="hide" >
     <v-app-bar-nav-icon
       variant="text"
       @click.stop="drawer = !drawer"
