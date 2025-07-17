@@ -1,17 +1,17 @@
 <template>
-  <HomeHero />
-
   <v-container>
+    <HomeHero />
+
     <v-breadcrumbs :items="breadCrumbs">
-      <template v-slot:divider>
-        <v-icon icon="mdi-chevron-right"></v-icon>
+      <template #divider>
+        <v-icon icon="mdi-chevron-right"/>
       </template>
     </v-breadcrumbs>
     <v-row>
       <v-col cols="12">
         <Podcast />
       </v-col>
-      <v-divider thickness="4"></v-divider>
+      <v-divider thickness="4"/>
       <v-col cols="12">
         <Collection :limit="6" />
         <v-col>

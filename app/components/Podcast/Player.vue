@@ -1,12 +1,12 @@
 <template>
   <Soundiocan
+    ref="player"
     :slider="true"
     :file="file"
     :title="store.currentPodcast.title"
     :subtitle="getCollectionNameById(store.currentPodcast.collection)"
     :image="store.currentPodcast.cover_url"
     color="secondary"
-    ref="player"
     elevation="24"
   />
 </template>
@@ -14,9 +14,9 @@
 <script setup lang="ts">
 import Soundiocan from "soundiocan";
 import { ref, watch } from "vue";
-import { usePodcastStore } from "~/stores/podcast";
-import type { Podcast } from "~/models/podcast";
-import type { PodcastCollection } from "~/models/podcastCollection";
+import { usePodcastStore } from "@@/stores/podcast";
+import type { Podcast } from "@@/models/podcast";
+import type { PodcastCollection } from "@@/models/podcastCollection";
 
 const player = ref(Soundiocan); // Reference to the Soundiocan component
 

@@ -6,9 +6,3 @@
     </div>
   </v-parallax>
 </template>
-
-<script setup lang="ts">
-import { usePodcastStore } from "~/stores/podcast";
-
-const store = usePodcastStore();
-</script>

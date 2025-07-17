@@ -3,9 +3,9 @@
     <v-col cols="12" class="d-flex justify-center">
       <v-card elevation="8">
         <v-img :width="250" :src="podcast.cover_url" aspect-ratio="1/1" cover>
-          <template v-slot:placeholder>
+          <template #placeholder>
             <v-row align="center" justify="center" class="fill-height">
-              <v-progress-circular indeterminate color="primary"></v-progress-circular>
+              <v-progress-circular indeterminate color="primary"/>
             </v-row>
           </template>
         </v-img>
@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Podcast } from "~/models/podcast";
+import type { Podcast } from "@@/models/podcast";
 
 defineProps<{ podcast: Podcast }>();
 </script>

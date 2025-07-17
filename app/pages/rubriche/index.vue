@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <v-breadcrumbs :items="breadCrumbs">
-      <template v-slot:divider>
-        <v-icon icon="mdi-chevron-right"></v-icon>
+      <template #divider>
+        <v-icon icon="mdi-chevron-right"/>
       </template>
     </v-breadcrumbs>
     <v-row>

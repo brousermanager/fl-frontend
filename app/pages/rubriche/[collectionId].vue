@@ -1,8 +1,8 @@
 <template>
 	<v-container fluid class="d-flex flex-column">
 		<v-breadcrumbs :items="breadCrumbs">
-			<template v-slot:divider>
-				<v-icon icon="mdi-chevron-right"></v-icon>
+			<template #divider>
+				<v-icon icon="mdi-chevron-right"/>
 			</template>
 		</v-breadcrumbs>
 		<v-row>
@@ -35,9 +35,9 @@
 </template>
 
 <script setup lang="ts">
-	import { usePodcastStore } from "~/stores/podcast";
-	import type { Podcast } from "~/models/podcast";
-	import type { PodcastCollection } from "~/models/podcastCollection";
+	import { usePodcastStore } from "@@/stores/podcast";
+	import type { Podcast } from "@@/models/podcast";
+	import type { PodcastCollection } from "@@/models/podcastCollection";
 
 	const store = usePodcastStore();
 	const podcasts = ref<Podcast[]>([]);

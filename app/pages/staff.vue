@@ -1,11 +1,11 @@
 <template>
   <v-container>
     <v-breadcrumbs :items="breadCrumbs">
-      <template v-slot:divider>
-        <v-icon icon="mdi-chevron-right"></v-icon>
+      <template #divider>
+        <v-icon icon="mdi-chevron-right"/>
       </template>
     </v-breadcrumbs>
-    <hr style="background-color: white" />
+    <hr style="background-color: white" >
     <v-row class="justify-center py-5">
       <v-col v-for="member in staff" cols="12" md="3">
         <StaffCard :staff="member" />

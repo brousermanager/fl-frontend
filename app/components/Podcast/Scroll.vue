@@ -9,15 +9,14 @@
           @click="updateCurrentPodcast(item.id)"
         />
       </v-container>
-      <v-divider vertical ></v-divider>
+      <v-divider vertical />
     </template>
   </v-infinite-scroll>
 </template>
 
 <script setup lang="ts">
-import { usePodcastStore } from "~/stores/podcast";
-import type { Podcast } from "~/models/podcast";
-import { useDisplay } from "vuetify";
+import { usePodcastStore } from "@@/stores/podcast";
+import type { Podcast } from "@@/models/podcast";
 
 const items = ref<Podcast[]>([]);
 const store = usePodcastStore();
@@ -56,27 +55,6 @@ const updateCurrentPodcast = (podcastId: string) => {
 const getCardColor = (podcastId: string) => {
   return podcastId === store.currentPodcast.id ? "secondary" : "darkPrimary";
 };
-
-const { name } = useDisplay();
-
-const width = computed(() => {
-  // name is reactive and
-  // must use .value
-  switch (name.value) {
-    case "xs":
-      return 300;
-    case "sm":
-      return 300;
-    case "md":
-      return 350;
-    case "lg":
-      return 350;
-    case "xl":
-      return 350;
-    case "xxl":
-      return 350;
-  }
-});
 </script>
 
 <style scoped>

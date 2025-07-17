@@ -6,19 +6,21 @@
       </v-card>
     </v-col>
     <v-col
+      v-for="(collection, index) in podcastCollections"
+      :key="index"
       cols="12"
       lg="4"
       xl="3"
       sm="6"
-      v-for="(collection, index) in podcastCollections"
-      :key="index"
     >
-      <CollectionCard :podcastCollection="collection" />
+      <CollectionCard :podcast-collection="collection" />
     </v-col>
   </v-row>
 </template>
 
 <script setup lang="ts">
+import { usePodcastStore } from "@@/stores/podcast";
+
 const store = usePodcastStore();
 
 const props = defineProps<{

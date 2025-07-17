@@ -1,6 +1,6 @@
 <template>
   <v-card elevation="8" class="ma-5" hover>
-    <v-img height="225" width="225" :src="podcast.cover_url" cover></v-img>
+    <v-img height="225" width="225" :src="podcast.cover_url" cover/>
 
     <v-card-item>
       <v-card-title color="orange-lighten-2" class="text-h6">
@@ -13,19 +13,19 @@
     </v-card-item>
 
     <v-card-actions>
-      <v-btn color="orange-lighten-2" text="Descrizione"></v-btn>
+      <v-btn color="orange-lighten-2" text="Descrizione"/>
 
-      <v-spacer></v-spacer>
+      <v-spacer/>
 
       <v-btn
         :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
         @click="show = !show"
-      ></v-btn>
+      />
     </v-card-actions>
 
     <v-expand-transition>
       <div v-show="show">
-        <v-divider></v-divider>
+        <v-divider/>
         <v-card-text class="scrollable-description">
           <div>{{ podcast.description }}</div>
         </v-card-text>
@@ -35,9 +35,9 @@
 </template>
 
 <script setup lang="ts">
-import { usePodcastStore } from "~/stores/podcast";
-import type { Podcast } from "~/models/podcast";
-import type { PodcastCollection } from "~/models/podcastCollection";
+import { usePodcastStore } from "@@/stores/podcast";
+import type { Podcast } from "@@/models/podcast";
+import type { PodcastCollection } from "@@/models/podcastCollection";
 
 const store = usePodcastStore();
 

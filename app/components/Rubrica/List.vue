@@ -8,7 +8,7 @@
         class="py-3"
         @click="updateCurrentPodcast(podcast.id)"
       >
-        <template v-slot:prepend>
+        <template #prepend>
           <v-avatar
             :color="store.currentPodcast.id === podcast.id ? 'secondary' : 'pink'"
             size="36"
@@ -24,15 +24,15 @@
         </v-list-item-subtitle>
       </v-list-item>
 
-      <v-divider v-if="index < props.podcasts.length - 1"></v-divider>
+      <v-divider v-if="index < props.podcasts.length - 1"/>
     </template>
-    <v-spacer></v-spacer>
+    <v-spacer/>
   </v-list>
 </template>
 
 <script setup lang="ts">
-import type { Podcast } from "~/models/podcast";
-import { usePodcastStore } from "~/stores/podcast";
+import type { Podcast } from "@@/models/podcast";
+import { usePodcastStore } from "@@/stores/podcast";
 
 const store = usePodcastStore();
 const props = defineProps<{ podcasts: Podcast[] }>();

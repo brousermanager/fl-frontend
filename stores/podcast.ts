@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
-import type { Podcast } from "~/models/podcast";
-import type { PodcastCollection } from "~/models/podcastCollection";
+import type { Podcast } from "@@/models/podcast";
+import type { PodcastCollection } from "@@/models/podcastCollection";
 
 export const usePodcastStore = defineStore("podcast", () => {
 	const count = ref(0);
@@ -17,7 +17,7 @@ export const usePodcastStore = defineStore("podcast", () => {
 		try {
 			const response = await axios.get(`${useRuntimeConfig().public.REST_API_URL}/podcast-collection`);
 			console.log(response);
-			const data = await response.data;
+			const data = await response.data as PodcastCollection[];
 			podcastCollections.value = data;
 		} catch (err: unknown) {
 			if (err instanceof Error) {
@@ -53,10 +53,10 @@ export const usePodcastStore = defineStore("podcast", () => {
 
 	const getPodcastsByCollection = async (collectionId: string): Promise<Podcast[]> => {
 		loading.value = true;
-		let data = [];
+		let data: Podcast[] = [];
 		try {
 			const response = await axios.get(`${useRuntimeConfig().public.REST_API_URL}/podcast/collection/${collectionId}`);
-			data = await response.data;
+			data = await response.data as Podcast[];
 			console.log("getPodcastsByCollection", data);
 		} catch (err: unknown) {
 			if (err instanceof Error) {
