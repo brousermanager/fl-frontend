@@ -7,7 +7,7 @@
     </v-breadcrumbs>
     <hr style="background-color: white" >
     <v-row class="justify-center py-5">
-      <v-col v-for="member in staff" cols="12" md="3">
+      <v-col v-for="(member, index) in staff" :key="index" cols="12" md="3">
         <StaffCard :staff="member" />
       </v-col>
     </v-row>

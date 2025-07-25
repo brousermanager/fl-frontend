@@ -24,10 +24,10 @@ const currentPage = ref(1);
 const pageSize = 10;
 
 const load = async ({
-  side,
+  _side,
   done,
 }: {
-  side: "end" | "start" | "both";
+  _side: "end" | "start" | "both";
   done: (status: "error" | "loading" | "empty" | "ok") => void;
 }) => {
   try {
@@ -40,6 +40,7 @@ const load = async ({
       done("empty");
     }
   } catch (error) {
+    console.error("Error loading podcasts:", error);
     done("error");
   }
 };

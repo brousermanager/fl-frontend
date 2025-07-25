@@ -18,7 +18,12 @@
 </template>
 
 <script setup>
-const { staff } = defineProps(["staff"]);
+const { staff } = defineProps({
+  staff: {
+    type: Object,
+    required: true
+  }
+});
 </script>
 
 <style scoped>
