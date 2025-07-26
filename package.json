@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "frequenza-libera-frontend",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -8,12 +8,28 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint --ext .ts,.vue .",
     "lint:fix": "eslint --ext .ts,.vue . --fix",
-    "lint:knip": "knip"
+    "lint:knip": "knip",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "tauri:android": "tauri android dev",
+    "tauri:android:build": "npm run generate && tauri android build --debug",
+    "tauri:android:build:release": "npm run generate && tauri android build --release",
+    "tauri:ios": "tauri ios dev",
+    "tauri:ios:build": "npm run generate && tauri ios build --debug",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.7.0",
     "@nuxt/eslint": "^1.5.2",
-    "@tauri-apps/cli": "^2.6.2",
+    "@tauri-apps/api": "^2.7.0",
+    "@tauri-apps/cli": "^2.7.1",
+    "@tauri-apps/plugin-barcode-scanner": "^2.4.0",
+    "@tauri-apps/plugin-biometric": "^2.3.0",
+    "@tauri-apps/plugin-haptics": "^2.3.0",
+    "@tauri-apps/plugin-nfc": "^2.3.0",
+    "@tauri-apps/plugin-os": "^2.3.0",
+    "@tauri-apps/plugin-shell": "^2.3.0",
     "@types/node": "^22.16.4",
     "eslint": "^9.31.0",
     "nuxt": "^4.0.0"

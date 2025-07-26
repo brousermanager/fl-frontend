@@ -1,6 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	ssr: false,
+	nitro: {
+		prerender: {
+			routes: ['/']
+		}
+	},
 	app: {
 		head: {
 			title: "Radio Frequenza Libera",
@@ -29,7 +34,8 @@ export default defineNuxtConfig({
 	devtools: {
 		timeline: {
 			enabled: true
-		}
+		},
+		enabled: process.env.NODE_ENV === 'development' && !process.env.TAURI_PLATFORM
 	},
 	compatibilityDate: "2025-07-17"
 });
