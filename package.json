@@ -14,8 +14,8 @@
     "tauri:build": "tauri build",
     "tauri:android:init": "tauri android init",
     "tauri:android": "tauri android dev",
-    "tauri:android:build": "npm run generate && tauri android build --debug",
-    "tauri:android:build:release": "npm run generate && tauri android build --release",
+    "tauri:android:build": "tauri android build --debug",
+    "tauri:android:build:release": "tauri android build --release",
     "tauri:ios": "tauri ios dev",
     "tauri:ios:build": "npm run generate && tauri ios build --debug",
     "prepare": "husky"
