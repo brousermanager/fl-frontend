@@ -9,6 +9,8 @@
     <v-toolbar-title><strong>
       Radio Frequenza Libera
     </strong></v-toolbar-title>
+
+    <v-img :src="logo" max-width="50" class="mr-5" />
   </v-app-bar>
 
   <v-navigation-drawer
@@ -40,6 +42,8 @@
 </template>
 
 <script lang="ts" setup>
+import logo from '@/assets/logo.png';
+
 const drawer = ref(false);
 const group = ref("");
 
