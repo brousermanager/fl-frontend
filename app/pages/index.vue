@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <TauriControls />
     <HomeHero />
 
     <v-breadcrumbs :items="breadCrumbs">
