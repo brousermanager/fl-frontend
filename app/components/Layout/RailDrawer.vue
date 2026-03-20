@@ -6,6 +6,12 @@
     />
 
     <v-toolbar-title><strong>Radio Frequenza Libera</strong></v-toolbar-title>
+
+    <v-spacer />
+
+    <v-btn variant="text" icon="mdi-instagram" aria-label="Instagram" href="https://www.instagram.com/frequenzalibera/"/>
+    <v-btn variant="text" icon="mdi-twitch" aria-label="Twitch" href="https://www.twitch.tv/radiofrequenzalibera"/>
+    <v-btn variant="text" icon="mdi-youtube" aria-label="YouTube" href="https://www.youtube.com/@frequenzalibera"/>
   </v-app-bar>
 
   <v-navigation-drawer
@@ -27,10 +33,10 @@
         @click="navigateTo('/rubriche')"
       />
       <v-list-item
-        prepend-icon="mdi-account-group"
-        title="Staff"
-        value="staff"
-        @click="navigateTo('/staff')"
+        prepend-icon="mdi-text-box-outline"
+        title="Statuto"
+        value="statuto"
+        @click="navigateTo('/statuto')"
       />
     </v-list>
   </v-navigation-drawer>
