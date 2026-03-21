@@ -17,7 +17,7 @@ export const usePodcastStore = defineStore("podcast", () => {
 		try {
 			const response = await axios.get(`${useRuntimeConfig().public.REST_API_URL}/podcast-collection`);
 			console.log(response);
-			const data = await response.data as PodcastCollection[];
+			const data = (await response.data) as PodcastCollection[];
 			podcastCollections.value = data;
 		} catch (err: unknown) {
 			if (err instanceof Error) {
@@ -56,7 +56,7 @@ export const usePodcastStore = defineStore("podcast", () => {
 		let data: Podcast[] = [];
 		try {
 			const response = await axios.get(`${useRuntimeConfig().public.REST_API_URL}/podcast/collection/${collectionId}`);
-			data = await response.data as Podcast[];
+			data = (await response.data) as Podcast[];
 			console.log("getPodcastsByCollection", data);
 		} catch (err: unknown) {
 			if (err instanceof Error) {
@@ -64,10 +64,9 @@ export const usePodcastStore = defineStore("podcast", () => {
 			} else {
 				error.value = "An unexpected error occurred";
 			}
-		} finally {
-			loading.value = false;
-			return data;
 		}
+		loading.value = false;
+		return data;
 	};
 
 	const updateCurrentPodcast = (podcast: Podcast) => {

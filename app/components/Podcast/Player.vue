@@ -6,8 +6,9 @@
     :title="store.currentPodcast.title"
     :subtitle="getCollectionNameById(store.currentPodcast.collection)"
     :image="store.currentPodcast.cover_url"
-    color="secondary"
-    elevation="24"
+    :show-speed-control="true"
+    color="purple"
+    background-color="#2d1b3d"
   />
 </template>
 
