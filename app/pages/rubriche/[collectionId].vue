@@ -15,10 +15,12 @@
 
 		<v-row md="8">
 			<v-col>
-				<RubricaCard v-if="store.currentPodcast" :podcast="store.currentPodcast" />
-			</v-col>
-			<v-col cols="12" md="8" style="max-height: 300px">
-				<RubricaList :podcasts="podcasts" class="h-100" />
+				<RubricaCarousel 
+					:podcasts="podcasts" 
+					:current-podcast="store.currentPodcast"
+					:item-per-slide="5"
+					@update:current-podcast="updateCurrentPodcast"
+				/>
 			</v-col>
 		</v-row>
 
@@ -52,7 +54,7 @@
 		{ title: "Home", disabled: false, href: "/" },
 		{ title: "Rubriche", disabled: false, href: "/rubriche" },
 		{
-			title: getCollectionNameById(route.params.collectionId) as string,
+			title: getCollectionNameById(String(route.params.collectionId)),
 			disabled: true
 		}
 	]);
@@ -60,10 +62,14 @@
 	onMounted(async () => {
 		try {
 			console.log("Fetching podcasts...");
-			podcasts.value = await store.getPodcastsByCollection(route.params.collectionId as string);
-			store.currentPodcast = podcasts.value[0];
+			podcasts.value = await store.getPodcastsByCollection(String(route.params.collectionId));
+			store.currentPodcast = podcasts.value[0] || { id: "", title: "", description: "", audio_url: "", cover_url: "", insert_time: "", update_time: "", collection: "", podcasters: [] };
 		} catch (error) {
 			console.error("Error fetching podcasts:", error);
 		}
 	});
+
+	const updateCurrentPodcast = (podcast: Podcast) => {
+		store.currentPodcast = podcast;
+	};
 </script>

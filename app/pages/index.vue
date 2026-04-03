@@ -1,8 +1,8 @@
 <template>
+  <HomeHero />
+
   <v-container>
     <TauriControls />
-    <HomeHero />
-
     <v-breadcrumbs :items="breadCrumbs">
       <template #divider>
         <v-icon icon="mdi-chevron-right"/>
@@ -22,7 +22,7 @@
         </v-col>
       </v-col>
     </v-row>
-  </v-container>
+    </v-container>
 </template>
 
 <script setup lang="ts">
